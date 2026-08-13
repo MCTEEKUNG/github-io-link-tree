@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f0e6">
+  <meta name="description" content="Heatwave AI — Research Link Tree สำหรับงานวิจัยการพยากรณ์ความเสี่ยงคลื่นความร้อนในประเทศไทยล่วงหน้า 2–4 สัปดาห์">
+  <title>Heatwave AI · Research Link Tree</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">ข้ามไปยังเนื้อหาหลัก</a>
+
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="wordmark" href="#top" aria-label="Heatwave AI กลับไปด้านบน">
+        <span class="wordmark-mark" aria-hidden="true">H</span>
+        <span>
+          <strong>Heatwave AI</strong>
+          <small>Research Link Tree</small>
+        </span>
+      </a>
+      <nav class="main-nav" aria-label="เมนูหลัก">
+        <a href="#problem">Problem</a>
+        <a href="#method">Method</a>
+        <a href="#evidence">Evidence</a>
+        <a href="#product">Product</a>
+        <a href="#documents">Documents</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero section-pad" id="top" aria-labelledby="hero-title">
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="status-dot" aria-hidden="true"></span> Static Research Hub · Thailand</div>
+          <h1 id="hero-title">พยากรณ์ความเสี่ยง<br><em>คลื่นความร้อน</em>ด้วย AI</h1>
+          <p class="hero-lede">งานวิจัยเพื่อประเมินความน่าจะเป็นของการเกิดคลื่นความร้อนรายจังหวัดในประเทศไทยล่วงหน้า 2–4 สัปดาห์ ด้วยข้อมูลภูมิอากาศและแมชชีนเลิร์นนิง</p>
+          <p class="hero-en">A probabilistic, sub-seasonal heatwave outlook for Thailand — designed to make climate risk easier to understand, verify, and act on.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="https://heat-map-frontend.vercel.app/" target="_blank" rel="noopener">เปิดระบบพยากรณ์ <span aria-hidden="true">↗</span></a>
+            <a class="button button-secondary" href="#documents">ดูเอกสารวิจัย <span aria-hidden="true">↓</span></a>
+          </div>
+          <div class="hero-note"><span aria-hidden="true">◎</span> Research artifact · Production model: <code>logistic_balanced_cal</code></div>
+        </div>
+        <div class="hero-visual" aria-label="ภาพประกอบโครงสร้างการพยากรณ์">
+          <div class="orbit orbit-one"></div>
+          <div class="orbit orbit-two"></div>
+          <div class="heat-core"><span>HEAT</span><strong>MAP</strong></div>
+          <div class="signal signal-one"><b>77</b><small>จังหวัด</small></div>
+          <div class="signal signal-two"><b>2–4</b><small>สัปดาห์</small></div>
+          <div class="signal signal-three"><b>P90</b><small>นิยามเหตุการณ์</small></div>
+          <div class="hero-caption">Climate signals → calibrated probability → public action</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="facts section-pad section-tint" aria-labelledby="facts-title">
+      <div class="shell">
+        <div class="section-kicker"><span>01</span> At a glance</div>
+        <div class="section-heading compact-heading">
+          <div>
+            <h2 id="facts-title">ภาพรวมโครงงาน</h2>
+            <p>Project profile / ขอบเขตที่ตรวจสอบได้</p>
+          </div>
+          <span class="heading-rule" aria-hidden="true"></span>
+        </div>
+        <div class="fact-grid">
+          <article class="fact-card"><span class="fact-value">77</span><span class="fact-label">จังหวัดทั่วประเทศไทย<br><small>Thai provinces</small></span></article>
+          <article class="fact-card"><span class="fact-value">2–4</span><span class="fact-label">สัปดาห์ล่วงหน้า<br><small>Public forecast lead</small></span></article>
+          <article class="fact-card"><span class="fact-value">1994–23</span><span class="fact-label">ช่วงข้อมูล ERA5<br><small>Historical climate data</small></span></article>
+          <article class="fact-card"><span class="fact-value">49d</span><span class="fact-label">ช่องว่าง temporal split<br><small>Leakage control gap</small></span></article>
+        </div>
+        <div class="signal-strip" aria-label="ตัวแปรสำคัญในงานวิจัย">
+          <span>ERA5</span><i aria-hidden="true">·</i><span>Soil moisture</span><i aria-hidden="true">·</i><span>MJO</span><i aria-hidden="true">·</i><span>Niño3.4</span><i aria-hidden="true">·</i><span>Calibrated ML</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad" id="problem" aria-labelledby="problem-title">
+      <div class="shell">
+        <div class="section-kicker"><span>02</span> Problem / ปัญหา</div>
+        <div class="section-heading">
+          <div>
+            <h2 id="problem-title">ความร้อนที่ต้องรู้ล่วงหน้า</h2>
+            <p>Why a weekly probability matters / ทำไม “ความน่าจะเป็น” จึงสำคัญ</p>
+          </div>
+          <span class="heading-rule" aria-hidden="true"></span>
+        </div>
+        <div class="two-column problem-layout">
+          <div class="prose-block">
+            <p class="lead-paragraph">คลื่นความร้อนไม่ได้กระทบทุกพื้นที่เหมือนกัน และการเตรียมตัวล่วงหน้าเพียงไม่กี่วันอาจไม่เพียงพอสำหรับโรงเรียน ชุมชน หรือผู้ทำงานกลางแจ้ง</p>
+            <p>Heatwave AI จึงไม่ได้พยายามบอกว่า “วันพรุ่งนี้จะร้อนกี่องศา” แต่ตอบคำถามที่ใช้วางแผนได้มากกว่า: <strong>อีก 2–4 สัปดาห์ จังหวัดใดมีโอกาสเกิดเหตุการณ์คลื่นความร้อนสูงกว่าปกติ?</strong></p>
+            <div class="definition-callout">
+              <span class="callout-label">นิยามเหตุการณ์ / Event definition</span>
+              <strong>Tmax > percentile 90</strong>
+              <span>อุณหภูมิสูงสุดเกินเกณฑ์ภูมิอากาศท้องถิ่นต่อเนื่องอย่างน้อย 3 วัน</span>
+            </div>
+            <a class="text-link" href="assets/01_heatwave_definition.svg" target="_blank" rel="noopener">ดูนิยามแบบภาพ <span aria-hidden="true">↗</span></a>
+          </div>
+          <figure class="visual-card visual-card-light">
+            <img src="assets/01_heatwave_definition.svg" alt="แผนภาพนิยามคลื่นความร้อนด้วย percentile 90 และการเกิดติดต่อกันอย่างน้อย 3 วัน">
+            <figcaption>Heatwave is defined relative to local climate, not one fixed national temperature.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad section-tint" id="method" aria-labelledby="method-title">
+      <div class="shell">
+        <div class="section-kicker"><span>03</span> Method / วิธีการ</div>
+        <div class="section-heading">
+          <div>
+            <h2 id="method-title">จากสัญญาณภูมิอากาศสู่ความเสี่ยง</h2>
+            <p>Data → features → model → quality gate</p>
+          </div>
+          <span class="heading-rule" aria-hidden="true"></span>
+        </div>
+        <div class="method-intro">
+          <div class="method-copy">
+            <p class="lead-paragraph">ระบบรวมสัญญาณจากพื้นผิวโลกและภูมิอากาศขนาดใหญ่ แล้วฝึกโมเดลให้รายงานเป็น probability ที่ผ่านการ calibration</p>
+            <div class="method-list">
+              <div><span class="list-number">01</span><p><strong>ข้อมูลภูมิอากาศ</strong><br><small>ERA5 Tmax, soil moisture, MJO และ Niño3.4</small></p></div>
+              <div><span class="list-number">02</span><p><strong>ชุดข้อมูลรายจังหวัด</strong><br><small>สร้าง target รายสัปดาห์สำหรับ 77 จังหวัด</small></p></div>
+              <div><span class="list-number">03</span><p><strong>ตรวจสอบตามเวลา</strong><br><small>Rolling-origin validation พร้อม gap 49 วัน</small></p></div>
+              <div><span class="list-number">04</span><p><strong>เผยแพร่เมื่อผ่านเกณฑ์</strong><br><small>ตรวจ probability skill, calibration และ contract</small></p></div>
+            </div>
+          </div>
+          <figure class="visual-card method-flow">
+            <img src="assets/08_ai_training_logic.svg" alt="แผนภาพขั้นตอนการฝึก AI ตั้งแต่ข้อมูลภูมิอากาศจนถึงการเผยแพร่ผล">
+            <figcaption>ระบบถูกออกแบบให้ตรวจสอบได้ตั้งแต่ข้อมูลเข้าไปจนถึง artifact ที่เผยแพร่</figcaption>
+          </figure>
+        </div>
+        <div class="method-panels">
+          <figure class="mini-visual"><img src="assets/02_climate_signals.svg" alt="แผนภาพ climate signals ที่ใช้ในงานวิจัย"><figcaption>Climate signals</figcaption></figure>
+          <figure class="mini-visual"><img src="assets/03_data_credibility_eda.svg" alt="แผนภาพการตรวจสอบคุณภาพข้อมูล"><figcaption>Data credibility</figcaption></figure>
+          <figure class="mini-visual"><img src="assets/06_serverless_architecture.svg" alt="แผนภาพสถาปัตยกรรมการเผยแพร่ระบบ"><figcaption>System architecture</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad" id="evidence" aria-labelledby="evidence-title">
+      <div class="shell">
+        <div class="section-kicker"><span>04</span> Evidence / หลักฐาน</div>
+        <div class="section-heading">
+          <div>
+            <h2 id="evidence-title">ความน่าเชื่อถือมาก่อนความหวือหวา</h2>
+            <p>How the research is evaluated / วิธีประเมินผล</p>
+          </div>
+          <span class="heading-rule" aria-hidden="true"></span>
+        </div>
+        <div class="evidence-grid">
+          <article class="evidence-card evidence-emphasis">
+            <span class="card-index">A</span>
+            <h3>Probabilistic metrics</h3>
+            <p>ประเมินทั้ง Brier Score, Brier Skill Score และ ROC-AUC เพื่อดูทั้งคุณภาพของ probability และความสามารถในการแยกเหตุการณ์</p>
+            <a class="text-link" href="documents/model-metrics.md" target="_blank" rel="noopener">ดู model metrics <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="evidence-card">
+            <span class="card-index">B</span>
+            <h3>Calibration</h3>
+            <p>ความน่าจะเป็นที่รายงานควรสอดคล้องกับความถี่ที่เกิดจริง ไม่ใช่เพียงทายลำดับความเสี่ยงได้ดี</p>
+            <a class="text-link" href="documents/calibration-diagnostics.md" target="_blank" rel="noopener">ดู calibration diagnostics <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="evidence-card">
+            <span class="card-index">C</span>
+            <h3>Leakage controls</h3>
+            <p>ใช้ time-based split และ embargo gap 49 วัน เพื่อไม่ให้ข้อมูลจากช่วงอนาคตไหลย้อนกลับไปในชุดฝึก</p>
+            <a class="text-link" href="documents/integrity.md" target="_blank" rel="noopener">ดู integrity notes <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="evidence-card">
+            <span class="card-index">D</span>
+            <h3>Operational gate</h3>
+            <p>candidate model ต้องมีหลักฐานระดับ province-level และผ่าน readiness gate ก่อนจึงจะพิจารณาแทน production model</p>
+            <a class="text-link" href="documents/model-promotion-readiness.md" target="_blank" rel="noopener">ดู promotion readiness <span aria-hidden="true">↗</span></a>
+          </article>
+        </div>
+        <div class="evidence-feature">
+          <figure class="visual-card evidence-figure"><img src="assets/05_model_evidence.svg" alt="แผนภาพหลักฐานการประเมินโมเดลด้วย BSS และ AUC"><figcaption>Evidence is reported with its evaluation context — model, split, lead time, and status.</figcaption></figure>
+          <div class="integrity-note">
+            <span class="note-mark" aria-hidden="true">!</span>
+            <div><strong>การแยกสถานะที่สำคัญ</strong><p>Production forecast ปัจจุบันใช้ <code>logistic_balanced_cal</code> ส่วน research candidates ที่ยังไม่ผ่าน readiness gate จะไม่ถูกนำเสนอว่าเป็นระบบ production</p><a class="text-link" href="documents/model-promotion.md" target="_blank" rel="noopener">อ่าน model promotion policy <span aria-hidden="true">↗</span></a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad section-dark" id="product" aria-labelledby="product-title">
+      <div class="shell">
+        <div class="section-kicker section-kicker-dark"><span>05</span> Product / ระบบ</div>
+        <div class="section-heading heading-dark">
+          <div>
+            <h2 id="product-title">จากงานวิจัยสู่การสื่อสารความเสี่ยง</h2>
+            <p>Research artifact → public-facing product</p>
+          </div>
+          <span class="heading-rule" aria-hidden="true"></span>
+        </div>
+        <div class="product-layout">
+          <figure class="product-shot"><img src="assets/frontend-demo.png" alt="ภาพตัวอย่างหน้าเว็บ HeatMAP สำหรับแสดงผลความเสี่ยงคลื่นความร้อน"><figcaption>HeatMAP frontend · public demonstration</figcaption></figure>
+          <div class="product-copy">
+            <p class="lead-paragraph">ผลลัพธ์ไม่ได้หยุดอยู่ที่ notebook แต่ถูกส่งผ่าน forecast contract ไปยังเว็บและช่องทางสื่อสารที่คนทั่วไปเข้าถึงได้</p>
+            <div class="product-links">
+              <a class="product-link" href="https://heat-map-frontend.vercel.app/" target="_blank" rel="noopener"><span class="link-symbol" aria-hidden="true">↗</span><span><strong>เปิด Live Forecast</strong><small>Latest published product · Vercel</small></span></a>
+              <a class="product-link" href="https://github.com/MCTEEKUNG/DeepSeek_Heatwave/tree/main/line-oa" target="_blank" rel="noopener"><span class="link-symbol" aria-hidden="true">↗</span><span><strong>LINE OA source / prototype</strong><small>ระบบสื่อสารผลพยากรณ์รายสัปดาห์</small></span></a>
+              <a class="product-link" href="https://mcteekung.github.io/heatwave-contract/forecast_provinces.json" target="_blank" rel="noopener"><span class="link-symbol" aria-hidden="true">↗</span><span><strong>Forecast contract</strong><small>Static JSON artifact · inspectable output</small></span></a>
+            </div>
+            <div class="product-disclaimer"><strong>หมายเหตุการใช้งาน</strong><p>Forecast นี้เป็นความน่าจะเป็นรายสัปดาห์ ไม่ใช่การพยากรณ์อุณหภูมิ ความรุนแรง หรือประกาศเตือนภัยอย่างเป็นทางการ ควรใช้ร่วมกับข้อมูลจากหน่วยงานที่เกี่ยวข้อง</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad" id="documents" aria-labelledby="documents-title">
+      <div class="shell">
+        <div class="section-kicker"><span>06</span> Documents / เอกสาร</div>
+        <div class="section-heading">
+          <div>
+            <h2 id="documents-title">เริ่มอ่านจากจุดที่เหมาะกับคุณ</h2>
+            <p>Curated research library / เอกสารฉบับหลักที่คัดมาแล้ว</p>
+          </div>
+          <span class="heading-rule" aria-hidden="true"></span>
+        </div>
+        <div class="document-feature">
+          <div class="poster-preview"><img src="assets/poster-preview.png" alt="ภาพตัวอย่างโปสเตอร์ Heatwave AI"><a class="poster-link" href="documents/poster.pdf" target="_blank" rel="noopener">เปิดโปสเตอร์ฉบับเต็ม <span aria-hidden="true">↗</span></a></div>
+          <div class="document-feature-copy"><span class="document-tag">START HERE · สำหรับผู้ประเมิน</span><h3>ภาพเดียวที่เห็นทั้งปัญหา วิธีการ และผลลัพธ์</h3><p>โปสเตอร์ฉบับหลักเหมาะสำหรับทำความเข้าใจโครงงานอย่างรวดเร็ว จากนั้นจึงเลือกอ่านเอกสารฉบับเต็มหรือ paper ในส่วนถัดไป</p><a class="button button-primary" href="documents/poster.pdf" target="_blank" rel="noopener">อ่านโปสเตอร์ PDF <span aria-hidden="true">↗</span></a></div>
+        </div>
+        <div class="document-group-grid">
+          <div class="document-group">
+            <div class="group-title"><span>01</span><h3>Research documents</h3></div>
+            <a class="doc-row" href="documents/abstract-proposal.pdf" target="_blank" rel="noopener"><span class="doc-icon">PDF</span><span><strong>บทคัดย่อและข้อเสนอโครงงาน</strong><small>Abstract & proposal · BUU Sciweek</small></span><b aria-hidden="true">↗</b></a>
+            <a class="doc-row" href="documents/research-summary.pdf" target="_blank" rel="noopener"><span class="doc-icon">PDF</span><span><strong>เอกสารสรุปสาระสำคัญ</strong><small>Research summary · concise overview</small></span><b aria-hidden="true">↗</b></a>
+            <a class="doc-row" href="documents/full-report.pdf" target="_blank" rel="noopener"><span class="doc-icon">PDF</span><span><strong>โครงงานฉบับสมบูรณ์</strong><small>Full project report · five-chapter version</small></span><b aria-hidden="true">↗</b></a>
+            <a class="doc-row" href="documents/heatmap-paper.pdf" target="_blank" rel="noopener"><span class="doc-icon">PDF</span><span><strong>HeatMAP research paper</strong><small>Academic paper · selected artifact</small></span><b aria-hidden="true">↗</b></a>
+          </div>
+          <div class="document-group">
+            <div class="group-title"><span>02</span><h3>Technical evidence</h3></div>
+            <a class="doc-row" href="documents/architecture-explainer.html" target="_blank" rel="noopener"><span class="doc-icon doc-html">WEB</span><span><strong>Architecture explainer</strong><small>ระบบตั้งแต่ pipeline ถึงการเผยแพร่</small></span><b aria-hidden="true">↗</b></a>
+            <a class="doc-row" href="documents/analysis-explainer.html" target="_blank" rel="noopener"><span class="doc-icon doc-html">WEB</span><span><strong>Analysis explainer</strong><small>วิธีอ่านผลการทดลองและข้อจำกัด</small></span><b aria-hidden="true">↗</b></a>
+            <a class="doc-row" href="documents/forecast-verification.md" target="_blank" rel="noopener"><span class="doc-icon doc-md">MD</span><span><strong>Forecast verification</strong><small>Verified · pending · observation rules</small></span><b aria-hidden="true">↗</b></a>
+            <a class="doc-row" href="documents/model-promotion-readiness.md" target="_blank" rel="noopener"><span class="doc-icon doc-md">MD</span><span><strong>Model promotion readiness</strong><small>Production gate and candidate status</small></span><b aria-hidden="true">↗</b></a>
+          </div>
+          <div class="document-group">
+            <div class="group-title"><span>03</span><h3>Source & reproducibility</h3></div>
+            <a class="doc-row" href="https://github.com/MCTEEKUNG/DeepSeek_Heatwave" target="_blank" rel="noopener"><span class="doc-icon doc-code">GIT</span><span><strong>Source repository</strong><small>DeepSeek_Heatwave · GitHub</small></span><b aria-hidden="true">↗</b></a>
+            <a class="doc-row" href="https://github.com/MCTEEKUNG/DeepSeek_Heatwave/blob/main/README.md" target="_blank" rel="noopener"><span class="doc-icon doc-md">MD</span><span><strong>Project README</strong><small>Pipeline, scope, status, and commands</small></span><b aria-hidden="true">↗</b></a>
+            <a class="doc-row" href="documents/contract.md" target="_blank" rel="noopener"><span class="doc-icon doc-md">MD</span><span><strong>Forecast contract</strong><small>Schema and serving interface</small></span><b aria-hidden="true">↗</b></a>
+            <a class="doc-row" href="documents/runbook.md" target="_blank" rel="noopener"><span class="doc-icon doc-md">MD</span><span><strong>Operational runbook</strong><small>How forecasts are generated and published</small></span><b aria-hidden="true">↗</b></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad section-tint" id="reproducibility" aria-labelledby="repro-title">
+      <div class="shell reproducibility-layout">
+        <div>
+          <div class="section-kicker"><span>07</span> Reproducibility / ทำซ้ำได้</div>
+          <h2 id="repro-title">อ่าน ตรวจสอบ และติดตามย้อนกลับได้</h2>
+          <p class="lead-paragraph">Research Hub นี้รวบรวมเฉพาะ artifact ที่อ้างอิงกลับไปยัง repository ต้นทางได้ โดยไม่เปิดเผย raw data หรือ model credentials</p>
+        </div>
+        <div class="repro-checklist" aria-label="รายการคุณสมบัติด้านการทำซ้ำงานวิจัย">
+          <div><span aria-hidden="true">✓</span><p><strong>Static artifact</strong><small>หน้าเว็บไม่มีการคำนวณโมเดลใน browser</small></p></div>
+          <div><span aria-hidden="true">✓</span><p><strong>Traceable sources</strong><small>เอกสารและรายงานชี้กลับไปยัง source repo</small></p></div>
+          <div><span aria-hidden="true">✓</span><p><strong>Explicit status</strong><small>แยก production, research candidate และ pending</small></p></div>
+          <div><span aria-hidden="true">✓</span><p><strong>Public interface</strong><small>ผลที่เผยแพร่ใช้ forecast contract ที่ตรวจ schema ได้</small></p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <div><a class="wordmark footer-wordmark" href="#top"><span class="wordmark-mark" aria-hidden="true">H</span><span><strong>Heatwave AI</strong><small>Thailand Sub-seasonal Heatwave Forecast</small></span></a><p class="footer-note">Research Link Tree สำหรับรวบรวมงานวิจัย เอกสาร และระบบต้นแบบ</p></div>
+      <div class="footer-links"><a href="https://github.com/MCTEEKUNG/DeepSeek_Heatwave" target="_blank" rel="noopener">Source repository ↗</a><a href="https://heat-map-frontend.vercel.app/" target="_blank" rel="noopener">Live product ↗</a><a href="#top">กลับด้านบน ↑</a></div>
+    </div>
+    <div class="shell footer-bottom"><span>© 2026 Heatwave AI · Static Research Hub</span><span>Forecast is a research probability, not an official warning.</span></div>
+  </footer>
+</body>
+</html>

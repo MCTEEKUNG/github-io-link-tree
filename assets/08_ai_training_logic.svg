@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="420mm" height="210mm" viewBox="0 0 1800 900">
+<defs>
+  <filter id="shadow" x="-20%" y="-20%" width="145%" height="145%"><feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#5A342A" flood-opacity=".13"/></filter>
+  <linearGradient id="heat" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#F3B64D"/><stop offset=".55" stop-color="#EE7A3E"/><stop offset="1" stop-color="#D94C3A"/></linearGradient>
+  <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse"><path d="M36 0H0V36" fill="none" stroke="#E8DED2" stroke-width="1" opacity=".38"/></pattern>
+</defs>
+<rect width="1800" height="900" fill="#FFF8EA"/><rect width="1800" height="900" fill="url(#grid)"/>
+<rect x="0" y="0" width="1800" height="145" fill="#503027"/>
+<rect x="0" y="137" width="1800" height="8" fill="url(#heat)"/>
+<text x="58" y="63" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="44" font-weight="900" fill="#FFFFFF" text-anchor="start"><tspan x="58" dy="0">AI เรียนรู้อย่างไร?</tspan></text>
+<text x="58" y="109" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="24" font-weight="750" fill="#F6C55A" text-anchor="start"><tspan x="58" dy="0">ฝึกกับอดีต • วัดกับอนาคตที่ไม่เคยเห็น • เผยแพร่เฉพาะช่วงที่ผ่านเกณฑ์</tspan></text>
+<text x="1735" y="76" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="21" font-weight="800" fill="#FFFFFF" text-anchor="end"><tspan x="1735" dy="0">TRAINING LOGIC</tspan></text>
+<text x="1735" y="108" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="18" font-weight="650" fill="#D8C9C2" text-anchor="end"><tspan x="1735" dy="0">Heatwave AI</tspan></text>
+
+<g filter="url(#shadow)"><rect x="48" y="186" width="250" height="430" rx="26" fill="#FFFCF5" stroke="#E8653F" stroke-width="3"/></g>
+  <circle cx="88" cy="226" r="26" fill="#E8653F"/><text x="88" y="235" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="19" font-weight="900" fill="#FFFFFF" text-anchor="middle"><tspan x="88" dy="0">01</tspan></text>
+  <circle cx="173" cy="286" r="42" fill="#E8653F" opacity=".13"/><text x="173" y="302" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="41" font-weight="900" fill="#E8653F" text-anchor="middle"><tspan x="173" dy="0">✓</tspan></text>
+  <text x="173" y="354" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="25" font-weight="900" fill="#5A342A" text-anchor="middle"><tspan x="173" dy="0">สร้างคำตอบ</tspan></text>
+  <text x="173" y="389" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="18" font-weight="800" fill="#E8653F" text-anchor="middle"><tspan x="173" dy="0">จากอดีตที่เกิดขึ้นจริง</tspan></text>
+  <line x1="72" y1="448" x2="274" y2="448" stroke="#E4D8CA" stroke-width="2"/>
+  <text x="173" y="485" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="17" font-weight="600" fill="#65564D" text-anchor="middle"><tspan x="173" dy="0">คลื่นความร้อน = Tmax &gt; P90</tspan><tspan x="173" dy="22">ของจังหวัดและช่วงเวลาเดียวกัน</tspan><tspan x="173" dy="22">ต่อเนื่องอย่างน้อย 3 วัน</tspan></text>
+<g filter="url(#shadow)"><rect x="338" y="186" width="250" height="430" rx="26" fill="#FFFCF5" stroke="#C7812C" stroke-width="3"/></g>
+  <circle cx="378" cy="226" r="26" fill="#C7812C"/><text x="378" y="235" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="19" font-weight="900" fill="#FFFFFF" text-anchor="middle"><tspan x="378" dy="0">02</tspan></text>
+  <circle cx="463" cy="286" r="42" fill="#C7812C" opacity=".13"/><text x="463" y="302" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="41" font-weight="900" fill="#C7812C" text-anchor="middle"><tspan x="463" dy="0">◷</tspan></text>
+  <text x="463" y="354" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="25" font-weight="900" fill="#5A342A" text-anchor="middle"><tspan x="463" dy="0">จำลองวันพยากรณ์</tspan></text>
+  <text x="463" y="389" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="18" font-weight="800" fill="#C7812C" text-anchor="middle"><tspan x="463" dy="0">ยืนอยู่ในอดีตแต่ละวัน</tspan></text>
+  <line x1="362" y1="448" x2="564" y2="448" stroke="#E4D8CA" stroke-width="2"/>
+  <text x="463" y="485" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="17" font-weight="600" fill="#65564D" text-anchor="middle"><tspan x="463" dy="0">INPUT: ข้อมูลที่รู้ถึงวันนั้น</tspan><tspan x="463" dy="22">ANSWER: ผลที่เกิดภายหลัง</tspan><tspan x="463" dy="22">อีก 2–4 สัปดาห์</tspan><tspan x="463" dy="22">คำตอบไม่ถูกส่งเข้าโมเดล</tspan></text>
+<g filter="url(#shadow)"><rect x="628" y="186" width="250" height="430" rx="26" fill="#FFFCF5" stroke="#397B98" stroke-width="3"/></g>
+  <circle cx="668" cy="226" r="26" fill="#397B98"/><text x="668" y="235" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="19" font-weight="900" fill="#FFFFFF" text-anchor="middle"><tspan x="668" dy="0">03</tspan></text>
+  <circle cx="753" cy="286" r="42" fill="#397B98" opacity=".13"/><text x="753" y="302" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="41" font-weight="900" fill="#397B98" text-anchor="middle"><tspan x="753" dy="0">≋</tspan></text>
+  <text x="753" y="354" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="25" font-weight="900" fill="#5A342A" text-anchor="middle"><tspan x="753" dy="0">สร้างตัวแปร</tspan></text>
+  <text x="753" y="389" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="18" font-weight="800" fill="#397B98" text-anchor="middle"><tspan x="753" dy="0">เหตุผลทางกายภาพ</tspan></text>
+  <line x1="652" y1="448" x2="854" y2="448" stroke="#E4D8CA" stroke-width="2"/>
+  <text x="753" y="485" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="17" font-weight="600" fill="#65564D" text-anchor="middle"><tspan x="753" dy="0">Tmax • ความชื้นดิน</tspan><tspan x="753" dy="22">MJO • Niño3.4 เดือนก่อน</tspan><tspan x="753" dy="22">ฤดูกาล • ตำแหน่งจังหวัด</tspan></text>
+<g filter="url(#shadow)"><rect x="918" y="186" width="250" height="430" rx="26" fill="#FFFCF5" stroke="#6C738F" stroke-width="3"/></g>
+  <circle cx="958" cy="226" r="26" fill="#6C738F"/><text x="958" y="235" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="19" font-weight="900" fill="#FFFFFF" text-anchor="middle"><tspan x="958" dy="0">04</tspan></text>
+  <circle cx="1043" cy="286" r="42" fill="#6C738F" opacity=".13"/><text x="1043" y="302" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="41" font-weight="900" fill="#6C738F" text-anchor="middle"><tspan x="1043" dy="0">▦</tspan></text>
+  <text x="1043" y="354" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="25" font-weight="900" fill="#5A342A" text-anchor="middle"><tspan x="1043" dy="0">แบ่งตามเวลา</tspan></text>
+  <text x="1043" y="389" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="18" font-weight="800" fill="#6C738F" text-anchor="middle"><tspan x="1043" dy="0">ป้องกันข้อมูลรั่วไหล</tspan></text>
+  <line x1="942" y1="448" x2="1144" y2="448" stroke="#E4D8CA" stroke-width="2"/>
+  <text x="1043" y="485" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="17" font-weight="600" fill="#65564D" text-anchor="middle"><tspan x="1043" dy="0">อดีตใช้ฝึก → เว้น 49 วัน</tspan><tspan x="1043" dy="22">อนาคตใช้ทดสอบ</tspan><tspan x="1043" dy="22">Rolling-origin จำนวน 5 รอบ</tspan></text>
+<g filter="url(#shadow)"><rect x="1208" y="186" width="250" height="430" rx="26" fill="#FFFCF5" stroke="#8D5AA0" stroke-width="3"/></g>
+  <circle cx="1248" cy="226" r="26" fill="#8D5AA0"/><text x="1248" y="235" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="19" font-weight="900" fill="#FFFFFF" text-anchor="middle"><tspan x="1248" dy="0">05</tspan></text>
+  <circle cx="1333" cy="286" r="42" fill="#8D5AA0" opacity=".13"/><text x="1333" y="302" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="41" font-weight="900" fill="#8D5AA0" text-anchor="middle"><tspan x="1333" dy="0">⇄</tspan></text>
+  <text x="1333" y="354" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="25" font-weight="900" fill="#5A342A" text-anchor="middle"><tspan x="1333" dy="0">ฝึกและเปรียบเทียบ</tspan></text>
+  <text x="1333" y="389" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="18" font-weight="800" fill="#8D5AA0" text-anchor="middle"><tspan x="1333" dy="0">เลือกจากหลักฐาน</tspan></text>
+  <line x1="1232" y1="448" x2="1434" y2="448" stroke="#E4D8CA" stroke-width="2"/>
+  <text x="1333" y="485" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="17" font-weight="600" fill="#65564D" text-anchor="middle"><tspan x="1333" dy="0">Logistic Regression</tspan><tspan x="1333" dy="22">เปรียบเทียบกับ LightGBM</tspan><tspan x="1333" dy="22">เลือกจากผลทดสอบตามเวลา</tspan><tspan x="1333" dy="22">ปรับเทียบด้วย Platt</tspan></text>
+<g filter="url(#shadow)"><rect x="1498" y="186" width="250" height="430" rx="26" fill="#FFFCF5" stroke="#3E8062" stroke-width="3"/></g>
+  <circle cx="1538" cy="226" r="26" fill="#3E8062"/><text x="1538" y="235" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="19" font-weight="900" fill="#FFFFFF" text-anchor="middle"><tspan x="1538" dy="0">06</tspan></text>
+  <circle cx="1623" cy="286" r="42" fill="#3E8062" opacity=".13"/><text x="1623" y="302" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="41" font-weight="900" fill="#3E8062" text-anchor="middle"><tspan x="1623" dy="0">◎</tspan></text>
+  <text x="1623" y="354" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="25" font-weight="900" fill="#5A342A" text-anchor="middle"><tspan x="1623" dy="0">สอบกับข้อมูลใหม่</tspan></text>
+  <text x="1623" y="389" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="18" font-weight="800" fill="#3E8062" text-anchor="middle"><tspan x="1623" dy="0">ไม่เคยใช้ฝึก</tspan></text>
+  <line x1="1522" y1="448" x2="1724" y2="448" stroke="#E4D8CA" stroke-width="2"/>
+  <text x="1623" y="485" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="17" font-weight="600" fill="#65564D" text-anchor="middle"><tspan x="1623" dy="0">10,010 คู่พยากรณ์</tspan><tspan x="1623" dy="22">วัด BSS และ AUC</tspan><tspan x="1623" dy="22">ผ่าน: 2–4 • ไม่ผ่าน: 5–6 สัปดาห์</tspan></text>
+
+<line x1="298" y1="401" x2="313" y2="401" stroke="#E8653F" stroke-width="6" stroke-linecap="round"/><polygon points="331,401 311,390 311,412" fill="#E8653F"/><line x1="588" y1="401" x2="603" y2="401" stroke="#E8653F" stroke-width="6" stroke-linecap="round"/><polygon points="621,401 601,390 601,412" fill="#E8653F"/><line x1="878" y1="401" x2="893" y2="401" stroke="#E8653F" stroke-width="6" stroke-linecap="round"/><polygon points="911,401 891,390 891,412" fill="#E8653F"/><line x1="1168" y1="401" x2="1183" y2="401" stroke="#E8653F" stroke-width="6" stroke-linecap="round"/><polygon points="1201,401 1181,390 1181,412" fill="#E8653F"/><line x1="1458" y1="401" x2="1473" y2="401" stroke="#E8653F" stroke-width="6" stroke-linecap="round"/><polygon points="1491,401 1471,390 1471,412" fill="#E8653F"/>
+
+<rect x="48" y="666" width="1704" height="82" rx="24" fill="#EAF2F4" stroke="#AFC5CE" stroke-width="2"/>
+<text x="82" y="699" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="20" font-weight="900" fill="#315F73" text-anchor="start"><tspan x="82" dy="0">กติกาสำคัญ</tspan></text>
+<text x="270" y="699" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="20" font-weight="750" fill="#315F73" text-anchor="start"><tspan x="270" dy="0">ตัวแปรของแต่ละแถวต้องเป็นข้อมูลที่มีอยู่แล้ว ณ วันออกพยากรณ์</tspan></text>
+<rect x="1220" y="681" width="190" height="50" rx="20" fill="#D94C3A"/><text x="1315" y="713" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="18" font-weight="900" fill="#FFFFFF" text-anchor="middle"><tspan x="1315" dy="0">NO FUTURE</tspan></text>
+<text x="1720" y="713" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="17" font-weight="800" fill="#7B4C3A" text-anchor="end"><tspan x="1720" dy="0">เฉลยใช้ตรวจ ไม่ใช่ตัวแปรของโมเดล</tspan></text>
+
+<rect x="48" y="770" width="1704" height="88" rx="24" fill="#503027"/>
+<text x="135" y="812" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="27" font-weight="900" fill="#F6C55A" text-anchor="middle"><tspan x="135" dy="0">30 ปี</tspan></text><text x="135" y="840" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="14" font-weight="650" fill="#FFFFFF" text-anchor="middle"><tspan x="135" dy="0">ข้อมูลย้อนหลัง</tspan></text>
+<line x1="235" y1="789" x2="235" y2="839" stroke="#8D6E61" stroke-width="2"/>
+<text x="360" y="812" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="27" font-weight="900" fill="#FFFFFF" text-anchor="middle"><tspan x="360" dy="0">77 จังหวัด</tspan></text><text x="360" y="840" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="14" font-weight="650" fill="#D8C9C2" text-anchor="middle"><tspan x="360" dy="0">ครอบคลุมทั่วประเทศ</tspan></text>
+<line x1="500" y1="789" x2="500" y2="839" stroke="#8D6E61" stroke-width="2"/>
+<text x="665" y="812" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="27" font-weight="900" fill="#FFFFFF" text-anchor="middle"><tspan x="665" dy="0">843,689 ระเบียน</tspan></text><text x="665" y="840" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="14" font-weight="650" fill="#D8C9C2" text-anchor="middle"><tspan x="665" dy="0">ข้อมูลจริง</tspan></text>
+<line x1="830" y1="789" x2="830" y2="839" stroke="#8D6E61" stroke-width="2"/>
+<text x="925" y="812" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="27" font-weight="900" fill="#F6C55A" text-anchor="middle"><tspan x="925" dy="0">49 วัน</tspan></text><text x="925" y="840" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="14" font-weight="650" fill="#FFFFFF" text-anchor="middle"><tspan x="925" dy="0">ช่องว่างก่อนทดสอบ</tspan></text>
+<line x1="1030" y1="789" x2="1030" y2="839" stroke="#8D6E61" stroke-width="2"/>
+<text x="1135" y="812" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="27" font-weight="900" fill="#FFFFFF" text-anchor="middle"><tspan x="1135" dy="0">5 รอบ</tspan></text><text x="1135" y="840" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="14" font-weight="650" fill="#D8C9C2" text-anchor="middle"><tspan x="1135" dy="0">Rolling-origin</tspan></text>
+<line x1="1240" y1="789" x2="1240" y2="839" stroke="#8D6E61" stroke-width="2"/>
+<text x="1360" y="812" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="27" font-weight="900" fill="#64C294" text-anchor="middle"><tspan x="1360" dy="0">BSS &gt; 0</tspan></text><text x="1360" y="840" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="14" font-weight="650" fill="#FFFFFF" text-anchor="middle"><tspan x="1360" dy="0">ดีกว่าค่าปกติย้อนหลัง</tspan></text>
+<line x1="1488" y1="789" x2="1488" y2="839" stroke="#8D6E61" stroke-width="2"/>
+<text x="1615" y="812" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="27" font-weight="900" fill="#64C294" text-anchor="middle"><tspan x="1615" dy="0">AUC &gt; 0.5</tspan></text><text x="1615" y="840" font-family="Noto Sans Thai, Leelawadee UI, Tahoma, sans-serif" font-size="14" font-weight="650" fill="#FFFFFF" text-anchor="middle"><tspan x="1615" dy="0">แยกเสี่ยงดีกว่าเดาสุ่ม</tspan></text>
+</svg>

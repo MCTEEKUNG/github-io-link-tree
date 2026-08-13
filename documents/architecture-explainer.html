@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DeepSeek Heatwave · Source Map / ML / Bridge</title>
+<style>
+  :root{
+    --bg:#0b1220; --bg2:#0f1a2e; --card:#13203a; --line:#23344f;
+    --ink:#e8eefb; --mut:#90a2c0; --acc:#ffb347; --acc2:#ff7a59;
+    --cool:#5ec8ff; --hot:#ff5d5d; --ok:#5fe3a1; --vio:#9d8cff;
+    --mono:"SF Mono",ui-monospace,Menlo,Consolas,monospace;
+    --sans:"Segoe UI",system-ui,-apple-system,"Noto Sans Thai",sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:radial-gradient(1200px 700px at 70% -10%,#16294a 0%,var(--bg) 55%);
+    color:var(--ink);font-family:var(--sans);line-height:1.65;-webkit-font-smoothing:antialiased}
+  a{color:var(--cool)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+
+  /* ---- animated heat bg ---- */
+  .heatbar{position:fixed;inset:0 0 auto 0;height:4px;z-index:50;
+    background:linear-gradient(90deg,var(--cool),var(--acc),var(--hot));
+    transform-origin:0 50%;transform:scaleX(0);transition:transform .1s linear}
+
+  header.hero{min-height:88vh;display:flex;flex-direction:column;justify-content:center;
+    padding:60px 0;position:relative;overflow:hidden}
+  .hero h1{font-size:clamp(34px,6vw,68px);line-height:1.05;margin:.1em 0;
+    background:linear-gradient(120deg,#fff,var(--acc) 60%,var(--hot));
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p.sub{font-size:clamp(15px,2.2vw,21px);color:var(--mut);max-width:680px}
+  .tag{display:inline-block;font-family:var(--mono);font-size:12px;letter-spacing:2px;
+    color:var(--acc);border:1px solid var(--line);border-radius:999px;padding:6px 14px;margin-bottom:18px}
+  .heatdots{position:absolute;inset:0;z-index:-1;opacity:.5}
+  .heatdots span{position:absolute;width:8px;height:8px;border-radius:50%;
+    background:var(--hot);filter:blur(1px);animation:rise linear infinite}
+  @keyframes rise{0%{transform:translateY(20px);opacity:0}
+    15%{opacity:.9}100%{transform:translateY(-90vh);opacity:0}}
+
+  section{padding:68px 0;border-top:1px solid var(--line)}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:3px;color:var(--acc2);text-transform:uppercase}
+  h2{font-size:clamp(26px,4vw,40px);margin:.2em 0 .5em}
+  h3{font-size:20px;margin:1.4em 0 .4em;color:var(--acc)}
+  p.lead{color:var(--mut);max-width:760px}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+  .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}
+  .reveal.d3{transition-delay:.24s}.reveal.d4{transition-delay:.32s}
+
+  /* pipeline */
+  .pipe{display:flex;flex-wrap:wrap;gap:0;align-items:stretch;margin-top:30px}
+  .stage{flex:1 1 150px;min-width:150px;background:var(--card);border:1px solid var(--line);
+    border-radius:14px;padding:18px;position:relative;transition:transform .3s,border-color .3s}
+  .stage:hover{transform:translateY(-6px);border-color:var(--acc)}
+  .stage .n{font-family:var(--mono);font-size:12px;color:var(--acc2)}
+  .stage h4{margin:.3em 0;font-size:16px}
+  .stage code{font-family:var(--mono);font-size:11.5px;color:var(--cool);word-break:break-all}
+  .arrow{display:flex;align-items:center;justify-content:center;width:34px;color:var(--acc)}
+  .arrow svg{width:22px;height:22px}
+  .flow{stroke-dasharray:6 6;animation:dash 1s linear infinite}
+  @keyframes dash{to{stroke-dashoffset:-12}}
+  @media(max-width:760px){.pipe{flex-direction:column}.arrow{width:auto;height:30px;transform:rotate(90deg)}}
+
+  /* cards grid */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:26px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;
+    transition:transform .3s,box-shadow .3s,border-color .3s}
+  .card:hover{transform:translateY(-5px);border-color:var(--acc);box-shadow:0 14px 40px -20px var(--acc2)}
+  .card .file{font-family:var(--mono);font-size:12.5px;color:var(--acc)}
+  .card .role{font-size:13.5px;color:var(--mut);margin-top:6px}
+  .card .pill{display:inline-block;font-size:10.5px;font-family:var(--mono);letter-spacing:1px;
+    padding:3px 8px;border-radius:6px;margin-top:10px}
+  .pill.be{background:#1d2c1d;color:var(--ok)}
+  .pill.fe{background:#1d2233;color:var(--cool)}
+  .pill.br{background:#2c2418;color:var(--acc)}
+
+  pre{background:#0a1322;border:1px solid var(--line);border-radius:12px;padding:16px 18px;
+    overflow:auto;font-family:var(--mono);font-size:12.5px;line-height:1.7;color:#cfe0f5}
+  pre .c{color:#6d829e}.k{color:var(--vio)}.s{color:var(--ok)}.f{color:var(--acc)}.n{color:var(--cool)}
+
+  /* ML formula box */
+  .mlrow{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:24px}
+  @media(max-width:760px){.mlrow{grid-template-columns:1fr}}
+  .box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .box h4{margin:0 0 .4em;color:var(--acc)}
+  .formula{font-family:var(--mono);font-size:13px;background:#0a1322;border-radius:10px;
+    padding:12px 14px;color:#d6e6fa;border:1px solid var(--line);margin:10px 0}
+
+  /* calibration animated demo */
+  .calib{margin-top:8px}
+  .bars{display:flex;align-items:flex-end;gap:10px;height:130px;margin:14px 0}
+  .bars .b{flex:1;border-radius:6px 6px 0 0;position:relative;transition:height 1.1s cubic-bezier(.2,.8,.2,1)}
+  .bars .b.raw{background:linear-gradient(var(--hot),#7a1d1d)}
+  .bars .b.cal{background:linear-gradient(var(--ok),#1d5a3a)}
+  .bars .b span{position:absolute;top:-20px;left:0;right:0;text-align:center;font-size:11px;font-family:var(--mono);color:var(--mut)}
+  .legend{display:flex;gap:18px;font-size:12.5px;color:var(--mut)}
+  .legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+
+  /* risk ramp */
+  .ramp{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+  .ramp div{flex:1;min-width:120px;border-radius:10px;padding:12px;font-size:13px;border:1px solid var(--line)}
+  .r0{background:linear-gradient(#13283a,#0e1b2a)}
+  .r1{background:linear-gradient(#14323a,#0e1b2a)}
+  .r2{background:linear-gradient(#3a2e14,#0e1b2a)}
+  .r3{background:linear-gradient(#3a1717,#0e1b2a)}
+  .ramp b{font-family:var(--mono)}
+
+  table{width:100%;border-collapse:collapse;margin-top:18px;font-size:13.5px}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line)}
+  th{color:var(--acc);font-family:var(--mono);font-size:12px;letter-spacing:1px}
+  td code{font-family:var(--mono);color:var(--cool);font-size:12.5px}
+
+  .note{font-size:13px;color:var(--mut);border-left:3px solid var(--acc2);padding:8px 14px;margin-top:16px;background:#ffffff05}
+  footer{padding:50px 0;color:var(--mut);font-size:13px;text-align:center;border-top:1px solid var(--line)}
+
+  /* contract json schema flow */
+  .bridge{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:14px;align-items:center;margin-top:26px}
+  @media(max-width:860px){.bridge{grid-template-columns:1fr;text-align:center}.bridge .ar{transform:rotate(90deg)}}
+  .node{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+  .node .t{font-size:15px;font-weight:600}
+  .node .d{font-size:12.5px;color:var(--mut);margin-top:4px}
+  .node.be{border-color:#2c5a3a}.node.ct{border-color:var(--acc)}.node.fe{border-color:#2c4a6a}
+  .ar svg{width:30px;height:22px;color:var(--acc)}
+  .pkt{stroke-dasharray:4 8;animation:dash 1s linear infinite}
+
+  .toc{position:fixed;right:14px;top:50%;transform:translateY(-50%);z-index:40;display:flex;flex-direction:column;gap:10px}
+  .toc a{width:11px;height:11px;border-radius:50%;background:var(--line);transition:background .3s,transform .3s}
+  .toc a:hover,.toc a.on{background:var(--acc);transform:scale(1.4)}
+  @media(max-width:760px){.toc{display:none}}
+</style>
+</head>
+<body>
+<div class="heatbar" id="heatbar"></div>
+<nav class="toc" id="toc">
+  <a href="#top" title="ภาพรวม"></a>
+  <a href="#pipeline" title="Pipeline"></a>
+  <a href="#codemap" title="Code map"></a>
+  <a href="#ml" title="ML thinking"></a>
+  <a href="#bridge" title="Bridge"></a>
+</nav>
+
+<header class="hero" id="top">
+  <div class="heatdots" id="dots"></div>
+  <div class="wrap">
+    <span class="tag reveal">DEEPSEEK_HEATWAVE · ARCHITECTURE EXPLAINER</span>
+    <h1 class="reveal d1">จาก ERA5 สู่จอผู้ใช้<br/>ทำนายคลื่นความร้อนไทย</h1>
+    <p class="sub reveal d2">รีวิว source code + วิธีคิดของโมเดล ML + วิธีเชื่อม Backend (Python) เข้ากับ
+      Frontend (Expo/React Native) ผ่าน "สัญญาข้อมูล" ไฟล์ JSON เดียว — ทำนายความน่าจะเป็นคลื่นความร้อน
+      ล่วงหน้า 2–6 สัปดาห์ ราย 77 จังหวัด</p>
+    <p class="sub reveal d3" style="font-family:var(--mono);font-size:13px;color:var(--acc)">↓ เลื่อนลงเพื่อดูระบบทำงานทีละชั้น</p>
+  </div>
+</header>
+
+<!-- ============ PIPELINE ============ -->
+<section id="pipeline"><div class="wrap">
+  <div class="eyebrow reveal">01 — End-to-end pipeline</div>
+  <h2 class="reveal d1">เส้นทางข้อมูล: predict → validate → distribute → render</h2>
+  <p class="lead reveal d2">ทั้งระบบเป็นแบบ <b>decoupled</b> — ไม่มี API server. Backend ผลิตไฟล์สัญญา
+    <code>forecast_provinces.json</code> หนึ่งไฟล์ แล้ว Frontend ไปอ่าน. นี่คือทั้งสาย:</p>
+
+  <div class="pipe reveal d2">
+    <div class="stage"><div class="n">DATA</div><h4>ERA5 + Indices</h4>
+      <code>download_era5_*.py<br/>download_indices.py</code>
+      <p style="font-size:12px;color:var(--mut);margin:.5em 0 0">Tmax, soil moisture L1/L3, MJO, Niño3.4</p></div>
+    <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path class="flow" d="M3 12h16"/><path d="M14 7l6 5-6 5"/></svg></div>
+    <div class="stage"><div class="n">TRAIN</div><h4>โมเดล pooled</h4>
+      <code>build_provinces_dataset.py<br/>train_final_provinces.py</code>
+      <p style="font-size:12px;color:var(--mut);margin:.5em 0 0">logistic_balanced + Platt → .pkl ราย lead</p></div>
+    <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path class="flow" d="M3 12h16"/><path d="M14 7l6 5-6 5"/></svg></div>
+    <div class="stage"><div class="n">PREDICT</div><h4>ออก forecast</h4>
+      <code>predict_provinces.py</code>
+      <p style="font-size:12px;color:var(--mut);margin:.5em 0 0">→ docs/forecast_provinces.json</p></div>
+  </div>
+  <div class="pipe reveal d3" style="margin-top:14px">
+    <div class="stage"><div class="n">GATE</div><h4>validate (hard)</h4>
+      <code>validate_contract.py</code>
+      <p style="font-size:12px;color:var(--mut);margin:.5em 0 0">schema=1, 77 จังหวัด, lead {2..6}, ranges, risk enum</p></div>
+    <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path class="flow" d="M3 12h16"/><path d="M14 7l6 5-6 5"/></svg></div>
+    <div class="stage"><div class="n">DISTRIBUTE</div><h4>publish_bridge</h4>
+      <code>publish_bridge.py --publish</code>
+      <p style="font-size:12px;color:var(--mut);margin:.5em 0 0">→ frontend public/ (dev) + contract repo → GitHub Pages (prod)</p></div>
+    <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path class="flow" d="M3 12h16"/><path d="M14 7l6 5-6 5"/></svg></div>
+    <div class="stage" style="border-color:#2c4a6a"><div class="n">RENDER</div><h4>HeatMAP UI</h4>
+      <code>deepseekContract.ts<br/>app/(tabs)/*</code>
+      <p style="font-size:12px;color:var(--mut);margin:.5em 0 0">fetch + assertContract → แผนที่ 77 จังหวัด</p></div>
+  </div>
+  <div class="note reveal d3">Hard gate = ถ้า contract ผิด schema/ช่วงค่า/จำนวนจังหวัด → <b>abort ไม่ distribute</b>.
+    ข้อมูลเสียจึงไปไม่ถึงผู้ใช้.</div>
+</div></section>
+
+<!-- ============ CODE MAP ============ -->
+<section id="codemap"><div class="wrap">
+  <div class="eyebrow reveal">02 — Source code mapping</div>
+  <h2 class="reveal d1">ไฟล์ไหนทำอะไร</h2>
+  <p class="lead reveal d2">แยก 3 โซน: <span style="color:var(--ok)">Backend (Python/ML)</span>,
+    <span style="color:var(--acc)">Bridge (สัญญา+เผยแพร่)</span>,
+    <span style="color:var(--cool)">Frontend (Expo)</span>.</p>
+
+  <h3 class="reveal">Backend · DeepSeek_Heatwave/scripts</h3>
+  <div class="grid">
+    <div class="card reveal"><div class="file">heatwave_target.py</div>
+      <div class="role">นิยาม heatwave: Tmax > เปอร์เซ็นไทล์ 90 (หน้าต่าง ±15 วันรอบ day-of-year) ติดกัน ≥3 วัน</div>
+      <span class="pill be">LABEL</span></div>
+    <div class="card reveal d1"><div class="file">province_grid.py</div>
+      <div class="role">map 77 จังหวัด → cell 0.25° ที่ใกล้ centroid ที่สุด (76 cell unique) เพื่อดึง local feature</div>
+      <span class="pill be">GEO</span></div>
+    <div class="card reveal d2"><div class="file">build_provinces_dataset.py</div>
+      <div class="role">ประกอบตาราง pooled (~828k แถว/lead): local + shared + province-static features. <b>ตัวเดียวกัน</b>ที่ train/serve ใช้ → กัน parity bug</div>
+      <span class="pill be">FEATURES</span></div>
+    <div class="card reveal"><div class="file">train_provinces.py / train_final_provinces.py</div>
+      <div class="role">CV แบบ date-blocked (gap 49 วัน) + fit_calibrated → .pkl ราย lead. ต้องชนะ climatology+persistence (q&lt;0.05)</div>
+      <span class="pill be">TRAIN</span></div>
+    <div class="card reveal d1"><div class="file">predict_provinces.py</div>
+      <div class="role">โหลด .pkl ทุก lead → ทำนายแถวล่าสุดของแต่ละจังหวัด → เขียน forecast_provinces.json</div>
+      <span class="pill be">SERVE</span></div>
+    <div class="card reveal d2"><div class="file">predict.py · risk_level()</div>
+      <div class="role">แปลง probability → ป้ายความเสี่ยง (Low/Normal/Elevated/High) ด้วยอัตราส่วนต่อ base_rate</div>
+      <span class="pill be">RISK</span></div>
+  </div>
+
+  <h3 class="reveal">Bridge · สัญญา + เผยแพร่</h3>
+  <div class="grid">
+    <div class="card reveal"><div class="file">validate_contract.py</div>
+      <div class="role">Hard gate ตรวจ schema_version==1, n=77, leads ตรง {2,3,4,5,6}, prob∈[0,1], lat/lon, risk enum + เตือน staleness</div>
+      <span class="pill br">VALIDATE</span></div>
+    <div class="card reveal d1"><div class="file">publish_bridge.py</div>
+      <div class="role">predict → validate → sync ไป frontend/public (dev) และ heatwave-contract repo แล้ว git push → Pages (prod)</div>
+      <span class="pill br">DISTRIBUTE</span></div>
+    <div class="card reveal d2"><div class="file">heatwave-contract → GitHub Pages</div>
+      <div class="role">repo สาธารณะเล็ก ๆ เสิร์ฟ JSON ที่ <code>access-control-allow-origin: *</code> ให้ Vercel fetch ข้าม origin ได้</div>
+      <span class="pill br">HOST</span></div>
+  </div>
+
+  <h3 class="reveal">Frontend · HeatMAP_Frontend</h3>
+  <div class="grid">
+    <div class="card reveal"><div class="file">services/deepseekContract.ts</div>
+      <div class="role">fetch(EXPO_PUBLIC_FORECAST_URL) → assertContract (schema guard) → mapPoints / provinceDays แปลงเป็น type ของแอป</div>
+      <span class="pill fe">ADAPTER</span></div>
+    <div class="card reveal d1"><div class="file">services/forecastService.ts</div>
+      <div class="role">นิยาม type MapForecastPoint / ProvinceForecastDay ที่หน้าจอใช้ — ไม่ต้องรู้รูปร่าง JSON ดิบ</div>
+      <span class="pill fe">TYPES</span></div>
+    <div class="card reveal d2"><div class="file">app/(tabs)/* + HistoricalRunBanner</div>
+      <div class="role">แผนที่ choropleth 77 จังหวัด, outlook ราย 2–6 สัปดาห์, แบนเนอร์ "โมเดลรันย้อนหลัง"</div>
+      <span class="pill fe">UI</span></div>
+  </div>
+</div></section>
+
+<!-- ============ ML THINKING ============ -->
+<section id="ml"><div class="wrap">
+  <div class="eyebrow reveal">03 — วิธีคิดของ ML</div>
+  <h2 class="reveal d1">ทำไมโมเดลถึงเชื่อถือได้</h2>
+  <p class="lead reveal d2">นี่ไม่ใช่ deep learning กล่องดำ — เป็น <b>classical ML บนข้อมูลตาราง</b> ที่ออกแบบรอบ ๆ
+    ความซื่อตรงทางสถิติ (rigor). หัวใจอยู่ที่ 4 ความคิด:</p>
+
+  <div class="mlrow reveal d2">
+    <div class="box">
+      <h4>① พยากรณ์ "ความน่าจะเป็น" ไม่ใช่ใช่/ไม่ใช่</h4>
+      <p style="font-size:14px;color:var(--mut)">target รายสัปดาห์ = มีวัน heatwave ≥1 วันในหน้าต่าง 7 วัน
+        ที่ lead 2–6 สัปดาห์. โมเดลคืน p ∈ [0,1].</p>
+      <div class="formula">y_rm_l{L} = 1 if any heatwave-day in week@(issue + L·7d)</div>
+      <p style="font-size:13px;color:var(--mut)">โมเดล pooled ตัวเดียวเรียนข้ามทุกจังหวัด (~828k แถว) — จังหวัดที่เหตุการณ์น้อยยังได้สกิลจากการแชร์</p>
+    </div>
+    <div class="box">
+      <h4>② Features = antecedent-only (กัน leakage)</h4>
+      <p style="font-size:14px;color:var(--mut)">ทุก feature คำนวณจากข้อมูล ≤ วันออกพยากรณ์เท่านั้น:</p>
+      <div class="formula"><span class="c">// local (ราย cell)</span>
+sm1/sm3 mean7/mean30/trend, tmax_mean7,
+in_hw_today <span class="c">(trailing streak ≥3)</span>, hot_frac7
+<span class="c">// shared</span>  mjo_*, nino34_lag1m, doy_sin/cos
+<span class="c">// static</span>  lat, lon, region(one-hot×6)</div>
+      <p style="font-size:13px;color:var(--mut)"><b>ห้าม</b>ใช้ค่าวันเป้าหมาย / base_rate ดิบ → กัน target leak</p>
+    </div>
+  </div>
+
+  <h3 class="reveal">③ Calibration — เหตุผลสำคัญที่สุด</h3>
+  <p class="lead reveal d1">บทเรียนจริงในโปรเจกต์: lgbm ดิบ AUC ดี (0.69–0.76) แต่ <b>BSS ติดลบทุก lead</b> —
+    เพราะ "ลำดับ" ดีแต่ "ตัวเลขความน่าจะเป็น" ไม่ตรงความจริง. แก้ด้วย Platt scaling บน block แยกเวลา.
+    กดปุ่มดูผล:</p>
+  <div class="box reveal d2 calib">
+    <div class="legend"><span><i style="background:var(--hot)"></i>p ดิบ (overconfident)</span>
+      <span><i style="background:var(--ok)"></i>p หลัง calibrate</span>
+      <span style="color:var(--mut)">เส้นประ = ความถี่จริง</span></div>
+    <div class="bars" id="bars">
+      <div class="b raw" data-raw="40" data-cal="78"><span>0.2</span></div>
+      <div class="b cal" data-raw="40" data-cal="78"><span></span></div>
+      <div class="b raw" data-raw="65" data-cal="100"><span>0.4</span></div>
+      <div class="b cal" data-raw="65" data-cal="100"><span></span></div>
+      <div class="b raw" data-raw="92" data-cal="118"><span>0.6</span></div>
+      <div class="b cal" data-raw="92" data-cal="118"><span></span></div>
+    </div>
+    <p style="font-size:13px;color:var(--mut);margin:0">เมื่อโมเดลบอก "0.6" มันควรเกิดจริงราว 60% ของครั้ง — calibration ดันแท่งเขียวให้ตรงความถี่จริง
+      จึงทำให้ BSS (Brier Skill Score) เป็นบวกและเอาชนะ baseline ได้</p>
+  </div>
+
+  <h3 class="reveal">④ Validation = ต้องชนะ baseline อย่างมีนัยสำคัญ</h3>
+  <p class="lead reveal d1">ถ้าทายไม่ดีกว่า "อากาศปกติตามฤดู" + "เมื่อวานเป็นยังไง" ก็ไร้ประโยชน์.
+    เกณฑ์ผ่าน = ชนะทั้ง climatology และ persistence (paired test, q&lt;0.05).</p>
+  <table class="reveal d2">
+    <thead><tr><th>โมเดล</th><th>lead 2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr></thead>
+    <tbody>
+      <tr><td>logistic</td><td><b style="color:var(--ok)">+0.168</b></td><td>+0.109</td><td>+0.118</td><td>+0.050</td><td>−0.014</td></tr>
+      <tr><td>lgbm_cal</td><td>+0.144</td><td><b style="color:var(--ok)">+0.156</b></td><td>+0.059</td><td>+0.024</td><td>+0.103</td></tr>
+      <tr><td style="color:var(--mut)">persistence (baseline)</td><td style="color:var(--mut)">+0.095</td><td style="color:var(--mut)">+0.048</td><td style="color:var(--mut)">+0.047</td><td style="color:var(--mut)">+0.024</td><td style="color:var(--mut)">+0.017</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:13px;color:var(--mut)">ตัวเลข = BSS เทียบ seasonal climatology (regional p90). ยิ่งบวกยิ่งดี.
+    Feature สำคัญสุด: <code>nino34_lag1m</code> &gt; <code>sm1_mean30</code> — ตรงสมมติฐาน ENSO + ความจำความชื้นดิน.</p>
+
+  <h3 class="reveal">⑤ จาก probability → ป้ายความเสี่ยง</h3>
+  <p class="lead reveal d1"><code>risk_level()</code> ไม่ได้ตัดที่ค่า p ตรง ๆ แต่ใช้ <b>อัตราส่วนต่อ base_rate</b>ของจังหวัด
+    (p / climatology_base_rate) — "เสี่ยงกว่าปกติกี่เท่า":</p>
+  <div class="ramp reveal d2">
+    <div class="r0"><b>Low · ต่ำ</b><br/><span style="font-size:12px;color:var(--mut)">p&lt;0.05 หรือ ratio&lt;0.75</span></div>
+    <div class="r1"><b>Normal · ปกติ</b><br/><span style="font-size:12px;color:var(--mut)">ratio &lt; 1.5</span></div>
+    <div class="r2"><b>Elevated · สูง</b><br/><span style="font-size:12px;color:var(--mut)">ratio &lt; 2.5</span></div>
+    <div class="r3"><b>High · สูงมาก</b><br/><span style="font-size:12px;color:var(--mut)">ratio ≥ 2.5</span></div>
+  </div>
+  <div class="note reveal d2">ตัวอย่างจริงจาก contract: กรุงเทพฯ lead 2 → p=0.386, base_rate=0.114, ratio=3.4 → <b>High / สูงมาก</b>.</div>
+</div></section>
+
+<!-- ============ BRIDGE ============ -->
+<section id="bridge"><div class="wrap">
+  <div class="eyebrow reveal">04 — Backend ↔ Frontend</div>
+  <h2 class="reveal d1">เชื่อมด้วย "สัญญาข้อมูล" ไฟล์เดียว</h2>
+  <p class="lead reveal d2">รอยต่อทั้งหมดคือ <code>forecast_provinces.json</code> (schema_version 1).
+    Backend ไม่รู้จัก React; Frontend ไม่รู้จัก Python. ทั้งคู่ตกลงกันแค่ "รูปร่าง JSON".</p>
+
+  <div class="bridge reveal d2">
+    <div class="node be"><div class="t">🐍 Producer</div><div class="d">predict_provinces.py เขียน JSON ตาม schema</div></div>
+    <div class="ar"><svg viewBox="0 0 30 22" fill="none" stroke="currentColor" stroke-width="2"><path class="pkt" d="M2 11h22"/><path d="M19 5l7 6-7 6"/></svg></div>
+    <div class="node ct"><div class="t">📄 Contract</div><div class="d">forecast_provinces.json<br/>GitHub Pages (CORS *)</div></div>
+    <div class="ar"><svg viewBox="0 0 30 22" fill="none" stroke="currentColor" stroke-width="2"><path class="pkt" d="M2 11h22"/><path d="M19 5l7 6-7 6"/></svg></div>
+    <div class="node fe"><div class="t">⚛️ Consumer</div><div class="d">deepseekContract.ts fetch + assert + map</div></div>
+  </div>
+
+  <h3 class="reveal">รูปร่างสัญญา (ตัวจริง)</h3>
+  <pre class="reveal d1"><span class="k">{</span>
+  <span class="f">"schema_version"</span>: <span class="n">1</span>,
+  <span class="f">"model"</span>: <span class="s">"logistic_balanced_cal"</span>,
+  <span class="f">"generated_at"</span>: <span class="s">"2026-06-14T12:11:55Z"</span>,
+  <span class="f">"n_provinces"</span>: <span class="n">77</span>,
+  <span class="f">"provinces"</span>: [
+    <span class="k">{</span> <span class="f">"id"</span>:<span class="n">1</span>, <span class="f">"code"</span>:<span class="s">"BKK"</span>, <span class="f">"name_th"</span>:<span class="s">"กรุงเทพมหานคร"</span>,
+      <span class="f">"lat"</span>:<span class="n">13.76</span>, <span class="f">"lon"</span>:<span class="n">100.50</span>, <span class="f">"issue_date"</span>:<span class="s">"2023-12-31"</span>,
+      <span class="f">"forecasts"</span>: [
+        <span class="k">{</span> <span class="f">"lead_weeks"</span>:<span class="n">2</span>, <span class="f">"probability"</span>:<span class="n">0.3858</span>,
+          <span class="f">"climatology_base_rate"</span>:<span class="n">0.1136</span>, <span class="f">"ratio_vs_normal"</span>:<span class="n">3.4</span>,
+          <span class="f">"risk_level_th"</span>:<span class="s">"สูงมาก"</span>, <span class="f">"risk_level_en"</span>:<span class="s">"High"</span> <span class="k">}</span>, <span class="c">… lead 3-6</span>
+      ] <span class="k">}</span>, <span class="c">… 77 จังหวัด</span>
+  ] <span class="k">}</span></pre>
+
+  <h3 class="reveal">ฝั่งรับ: guard แล้วแปลง type</h3>
+  <pre class="reveal d1"><span class="c">// deepseekContract.ts</span>
+<span class="k">export function</span> <span class="f">assertContract</span>(c) {
+  <span class="k">if</span> (c.schema_version !== <span class="n">1</span>)
+    <span class="k">throw new</span> Error(<span class="s">`schema_version ไม่รองรับ`</span>);  <span class="c">// ปฏิเสธทันทีถ้า schema เปลี่ยน</span>
+  <span class="k">return</span> c;
+}
+<span class="k">export function</span> <span class="f">mapPoints</span>(c) {           <span class="c">// JSON ดิบ → จุดบนแผนที่</span>
+  <span class="k">return</span> c.provinces.map(p => {
+    <span class="k">const</span> f = p.forecasts.find(x => x.lead_weeks === <span class="n">2</span>);
+    <span class="k">return</span> { province_id: p.id, lat: p.lat, lon: p.lon,
+      risk_level: <span class="f">toRisk</span>(f.risk_level_en),    <span class="c">// High → 'extreme'</span>
+      target_date: <span class="f">addDaysISO</span>(p.issue_date, f.lead_weeks*<span class="n">7</span>) };
+  });
+}</pre>
+
+  <table class="reveal d2">
+    <thead><tr><th>สภาพแวดล้อม</th><th>EXPO_PUBLIC_FORECAST_URL</th><th>กลไก sync</th></tr></thead>
+    <tbody>
+      <tr><td>Dev</td><td><code>/forecast_provinces.json</code> (same-origin)</td><td>publish_bridge.py → public/</td></tr>
+      <tr><td>Prod</td><td><code>https://…github.io/heatwave-contract/…</code></td><td>--publish → git push → Pages</td></tr>
+    </tbody>
+  </table>
+  <div class="note reveal d2">ข้อควรระวังจริง: prod build ต้องใช้ <code>bunx expo export -p web --clear</code> —
+    ไม่งั้น Metro cache จะไม่ฝังค่า env URL ใหม่. และ issue_date เป็น 2023-12-31 (รันย้อนหลัง)
+    จึงมีแบนเนอร์ "โมเดลรันย้อนหลัง" บอกผู้ใช้.</div>
+</div></section>
+
+<footer><div class="wrap">
+  DeepSeek_Heatwave · per-province sub-seasonal heatwave model → HeatMAP Frontend<br/>
+  decoupled bridge · schema_version 1 · 77 provinces × lead 2–6 weeks<br/>
+  <span style="opacity:.6">เอกสารนี้สร้างจากการรีวิว source code จริง · docs/architecture-explainer.html</span>
+</div></footer>
+
+<script>
+/* heat dots */
+const dots=document.getElementById('dots');
+for(let i=0;i<26;i++){const s=document.createElement('span');
+  s.style.left=Math.random()*100+'%';s.style.bottom='-10px';
+  s.style.animationDuration=(6+Math.random()*8)+'s';
+  s.style.animationDelay=(-Math.random()*10)+'s';
+  s.style.opacity=.3+Math.random()*.5;
+  const hue=Math.random();s.style.background=hue>.5?'var(--hot)':'var(--acc)';
+  dots.appendChild(s);}
+
+/* scroll progress */
+const hb=document.getElementById('heatbar');
+addEventListener('scroll',()=>{const h=document.documentElement;
+  const p=h.scrollTop/(h.scrollHeight-h.clientHeight);
+  hb.style.transform='scaleX('+p+')';},{passive:true});
+
+/* reveal on scroll */
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* calibration bars animate when section visible */
+const bars=document.getElementById('bars');
+let played=false;
+function setBars(useCal){[...bars.children].forEach(b=>{
+  const v=useCal&&b.classList.contains('cal')?b.dataset.cal:
+          (!b.classList.contains('cal')?b.dataset.raw:b.dataset.cal);
+  b.style.height=(b.classList.contains('cal')?b.dataset.cal:b.dataset.raw)+'px';});}
+const cio=new IntersectionObserver((es)=>{es.forEach(e=>{
+  if(e.isIntersecting&&!played){played=true;
+    [...bars.children].forEach((b,i)=>setTimeout(()=>{
+      b.style.height=(b.classList.contains('cal')?b.dataset.cal:b.dataset.raw)+'px';},i*120));
+  }})},{threshold:.4});
+[...bars.children].forEach(b=>b.style.height='4px');
+cio.observe(bars);
+
+/* TOC active dot */
+const secs=[...document.querySelectorAll('section,header')];
+const links=[...document.querySelectorAll('#toc a')];
+const tio=new IntersectionObserver((es)=>{es.forEach(e=>{
+  if(e.isIntersecting){const id=e.target.id;
+    links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+id));}})},{threshold:.5});
+secs.forEach(s=>tio.observe(s));
+</script>
+</body>
+</html>
