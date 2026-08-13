@@ -22,6 +22,7 @@
       </a>
       <nav class="main-nav" aria-label="เมนูหลัก">
         <a href="#references">Ref.</a>
+        <a href="#how-it-works">Model</a>
         <a href="#poster">Poster</a>
       </nav>
     </div>
@@ -123,17 +124,45 @@
 
     <section class="section-pad section-tint" id="how-it-works" aria-labelledby="flow-title">
       <div class="shell">
-        <div class="section-kicker"><span>03</span> How it works / วิธีทำงาน</div>
-        <div class="section-heading compact-heading"><div><h2 id="flow-title">จากข้อมูลสู่การเตรียมพร้อม</h2><p>Climate data → model → public action</p></div><span class="heading-rule" aria-hidden="true"></span></div>
-        <div class="research-pipeline" aria-label="กราฟขั้นตอนการทำงานและวิจัยจริงของ Heatwave AI">
-          <article class="pipeline-step"><div class="pipeline-meta"><span>01</span><small>DATA</small></div><h3>เก็บข้อมูล</h3><p>ERA5 30 ปี · MJO · Niño3.4 · เวลา/พื้นที่</p><small class="pipeline-output">Output · feature table</small></article>
-          <article class="pipeline-step"><div class="pipeline-meta"><span>02</span><small>EDA</small></div><h3>สำรวจ + ตรวจสอบ</h3><p>ความครบถ้วน ฤดูกาล และความสัมพันธ์ตัวแปร</p><small class="pipeline-output">Output · quality report</small></article>
-          <article class="pipeline-step"><div class="pipeline-meta"><span>03</span><small>LABEL</small></div><h3>กำหนดเหตุการณ์</h3><p>Tmax สูงกว่าเกณฑ์ท้องถิ่นต่อเนื่อง ≥ 3 วัน</p><small class="pipeline-output">Output · heatwave label</small></article>
-          <article class="pipeline-step"><div class="pipeline-meta"><span>04</span><small>SPLIT</small></div><h3>กันข้อมูลรั่วไหล</h3><p>แบ่งตามเวลาและเว้น temporal gap 49 วัน</p><small class="pipeline-output">Output · honest split</small></article>
-          <article class="pipeline-step"><div class="pipeline-meta"><span>05</span><small>MODEL</small></div><h3>สร้าง + ตรวจ model</h3><p>เปรียบเทียบ candidate และ calibrate probability</p><small class="pipeline-output">Production · logistic_balanced_cal</small></article>
-          <article class="pipeline-step"><div class="pipeline-meta"><span>06</span><small>PUBLIC</small></div><h3>สื่อสารผลลัพธ์</h3><p>เผยแพร่ความน่าจะเป็น 2–4 สัปดาห์ระดับ 77 จังหวัด</p><small class="pipeline-output">Output · risk map / LINE OA</small></article>
+        <div class="section-kicker"><span>03</span> Research graphic / ภาพรวมเชิงงานวิจัย</div>
+        <div class="section-heading compact-heading"><div><h2 id="flow-title">Heatwave AI คืออะไร?</h2><p>ฝึกจากอดีต → ตรวจสอบตามเวลา → ทำนายความน่าจะเป็นจากข้อมูลที่รู้ ณ วันออก forecast</p></div><span class="heading-rule" aria-hidden="true"></span></div>
+
+        <div class="research-graphic" aria-label="กราฟอธิบายข้อมูลที่ใช้ฝึกและทำนายของ Heatwave AI">
+          <div class="research-graphic-summary">
+            <div><strong>77 จังหวัด</strong><span>ระดับผลลัพธ์</span></div>
+            <div><strong>2–4 สัปดาห์</strong><span>ช่วงที่เผยแพร่</span></div>
+            <div><strong>Probability</strong><span>โอกาสเกิดเหตุการณ์ ไม่ใช่อุณหภูมิ</span></div>
+          </div>
+
+          <section class="research-lane research-lane-train" aria-labelledby="training-title">
+            <div class="research-lane-head"><span class="research-lane-index">01</span><div><span class="research-lane-kicker">TRAINING + VALIDATION</span><h3 id="training-title">การฝึกโมเดลด้วยข้อมูลอดีต</h3></div><span class="research-lane-note">คำตอบอนาคตใช้สร้าง label และตรวจสอบเท่านั้น</span></div>
+            <div class="research-lane-grid">
+              <article class="research-node"><span class="research-node-index">A</span><h4>ข้อมูลย้อนหลัง</h4><p>ERA5 ปี 1994–2023: Tmax, soil moisture ชั้น 1/3 · MJO · Niño3.4 lag · เวลา/พื้นที่</p><small>Input · historical observations</small></article>
+              <article class="research-node"><span class="research-node-index">B</span><h4>สร้างเหตุการณ์</h4><p>Heatwave = Tmax สูงกว่า P90 ของพื้นที่ต่อเนื่องอย่างน้อย 3 วัน แล้วสรุปเป็นรายสัปดาห์ lead 2–6</p><small>Target · weekly heatwave label</small></article>
+              <article class="research-node"><span class="research-node-index">C</span><h4>ฝึก ML + calibrate</h4><p>Logistic Regression แบบ balanced เรียนรู้ความสัมพันธ์ของ feature กับ label แล้วปรับ probability ด้วย Platt</p><small>Production · logistic_balanced_cal</small></article>
+              <article class="research-node"><span class="research-node-index">D</span><h4>ทดสอบอย่างเป็นธรรม</h4><p>Rolling-origin ตามเวลา 5 รอบ เว้น temporal gap 49 วัน เทียบ climatology และ persistence</p><small>Gate · BSS · ROC-AUC · calibration</small></article>
+            </div>
+          </section>
+
+          <div class="research-graphic-arrow" aria-hidden="true"><span>MODEL ARTIFACTS</span><strong>↓</strong><span>พร้อมนำไปใช้กับข้อมูลใหม่</span></div>
+
+          <section class="research-lane research-lane-predict" aria-labelledby="prediction-title">
+            <div class="research-lane-head"><span class="research-lane-index">02</span><div><span class="research-lane-kicker">PREDICTION + PUBLICATION</span><h3 id="prediction-title">การทำนายเมื่อมีข้อมูลรอบใหม่</h3></div><span class="research-lane-note">ไม่ใช้ label หรือข้อมูลอนาคตเป็น input</span></div>
+            <div class="research-lane-grid">
+              <article class="research-node"><span class="research-node-index">A</span><h4>ดึงข้อมูลล่าสุด</h4><p>ERA5 ช่วงล่าสุดประมาณ 70 วัน พร้อม MJO และ Niño3.4 ที่ใช้ได้ ณ วันออก forecast</p><small>Input · current available data</small></article>
+              <article class="research-node"><span class="research-node-index">B</span><h4>สร้าง feature ชุดเดิม</h4><p>ใช้ feature builder เดียวกับตอน train สำหรับทุกจังหวัด: lag, rolling, ฤดูกาล และตำแหน่ง</p><small>Parity · train = serve</small></article>
+              <article class="research-node"><span class="research-node-index">C</span><h4>คำนวณความน่าจะเป็น</h4><p>โมเดลคำนวณโอกาสเกิด heatwave แยกจังหวัดและ lead 2–6 แล้วเทียบกับ climatology ของจังหวัด</p><small>Output · calibrated probability</small></article>
+              <article class="research-node"><span class="research-node-index">D</span><h4>ส่งต่อให้ผู้ใช้</h4><p>ออกเป็น forecast contract 77 จังหวัด แสดงหลักที่ lead 2–4 ผ่าน HeatMAP App และช่องทางสื่อสาร</p><small>Public · risk map / LINE OA</small></article>
+            </div>
+          </section>
+
+          <div class="research-model-status">
+            <article><span class="status-label status-production">PRODUCTION</span><strong>Logistic Regression + class balancing + Platt calibration</strong><code>logistic_balanced_cal</code><small>ใช้จริงใน operational province forecast</small></article>
+            <article><span class="status-label status-candidate">RESEARCH CANDIDATE</span><strong>LightGBM</strong><span class="status-copy">ใช้ทดลองและเปรียบเทียบ ยังไม่ใช่โมเดล production</span></article>
+          </div>
+          <div class="research-graphic-rule"><span>NO FUTURE TARGET INPUT</span><p>ตอนทำนาย โมเดลเห็นเฉพาะข้อมูลที่มีอยู่แล้ว ณ วันออก forecast; ผลลัพธ์ในอนาคตจะถูกใช้ตอนตรวจสอบภายหลัง ไม่ได้ถูกป้อนกลับเข้าโมเดล</p></div>
+          <div class="research-graphic-actions"><a class="button button-secondary" href="assets/09_heatwave_ai_train_serve.svg" target="_blank" rel="noopener">เปิด Graphic เต็มภาพ <span aria-hidden="true">↗</span></a><a class="graphic-download" href="assets/09_heatwave_ai_train_serve.svg" download>ดาวน์โหลด SVG สำหรับ Poster <span aria-hidden="true">↓</span></a></div>
         </div>
-        <div class="pipeline-note"><span>RESEARCH TRACE</span><p>ทุกขั้นมี output ให้ตรวจย้อนกลับได้ ตั้งแต่ข้อมูลดิบที่ผ่าน EDA ไปจนถึงเกณฑ์คัดเลือกผลลัพธ์ก่อนเผยแพร่</p></div>
       </div>
     </section>
 
