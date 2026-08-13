@@ -201,6 +201,8 @@ h1 em { color: var(--orange); font-style: normal; }
 .horizon-chart svg { display: block; width: 100%; height: auto; }
 .plot-axis { stroke: rgba(79,48,37,.55); stroke-width: 1; }
 .plot-grid { stroke: rgba(79,48,37,.15); stroke-width: 1; stroke-dasharray: 4 5; }
+.plot-zero { stroke: rgba(198,91,42,.55); stroke-width: 1.5; stroke-dasharray: 5 4; }
+.plot-auc-threshold { stroke: rgba(65,107,84,.55); stroke-width: 1.5; stroke-dasharray: 5 4; }
 .plot-zone-published { fill: rgba(220,233,222,.9); }
 .plot-zone-muted { fill: rgba(156,141,128,.12); }
 .plot-zone-text { font-family: "IBM Plex Sans Thai", sans-serif; font-size: 11px; font-weight: 700; }
@@ -208,6 +210,13 @@ h1 em { color: var(--orange); font-style: normal; }
 .plot-zone-text-muted { fill: var(--ink-faint); }
 .plot-label { fill: var(--brown-dark); font-family: "Space Grotesk", sans-serif; font-size: 12px; font-weight: 700; }
 .plot-sub { fill: var(--ink-soft); font-family: "Space Grotesk", sans-serif; font-size: 10px; }
+.real-line { fill: none; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.real-line-bss { stroke: var(--orange); }
+.real-line-auc { stroke: var(--green); }
+.real-points { stroke: #fffaf3; stroke-width: 3; }
+.real-points-bss { fill: var(--orange); }
+.real-points-auc { fill: var(--green); }
+.plot-value-labels text { fill: var(--brown-dark); font-family: ui-monospace, monospace; font-size: 10px; text-anchor: middle; }
 .plot-gate-segment { fill: none; stroke-width: 4; stroke-linecap: round; }
 .plot-gate-bss { stroke: var(--orange); }
 .plot-gate-auc { stroke: var(--green); }

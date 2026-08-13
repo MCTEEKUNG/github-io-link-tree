@@ -1,0 +1,15 @@
+{
+  "source": "DeepSeek_Heatwave/outputs/operational/verification/scorecard.csv",
+  "source_note": "Operational Verification Scorecard",
+  "evaluation_window": "2024-01-30 to 2024-02-24",
+  "provinces": 77,
+  "issue_dates": 26,
+  "n_per_lead": 2002,
+  "leads": [
+    {"lead_week": 2, "bss": 0.2983151555, "roc_auc": 0.5918334226, "n": 2002},
+    {"lead_week": 3, "bss": 0.2585783853, "roc_auc": 0.6855864604, "n": 2002},
+    {"lead_week": 4, "bss": 0.0734379137, "roc_auc": 0.5688868435, "n": 2002},
+    {"lead_week": 5, "bss": -0.0044634347, "roc_auc": 0.4369186187, "n": 2002},
+    {"lead_week": 6, "bss": 0.1890512349, "roc_auc": 0.4623483954, "n": 2002}
+  ]
+}

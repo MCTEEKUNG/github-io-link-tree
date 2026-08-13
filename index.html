@@ -145,29 +145,31 @@
           <p class="lead-paragraph">ระบบเผยแพร่เฉพาะช่วงที่ผ่านเกณฑ์คุณภาพร่วมกัน เพื่อให้ผู้ใช้อ่านความเสี่ยงได้อย่างมีความหมาย ไม่ใช่แค่เห็นตัวเลข probability</p>
         </div>
         <div class="criteria-card horizon-card">
-          <div class="plot-head"><div><span class="plot-kicker">Decision plot / quality gate</span><h3 id="horizon-plot-title">ช่วงพยากรณ์ที่ผ่านเกณฑ์เผยแพร่</h3></div><span class="plot-badge">No invented point metrics</span></div>
-          <div class="horizon-chart" role="img" aria-labelledby="horizon-plot-title" aria-label="กราฟเกณฑ์คุณภาพและนโยบายการเผยแพร่ แสดงช่วง 2 ถึง 4 สัปดาห์เป็นช่วงที่ผ่านเกณฑ์ BSS มากกว่า 0 และ ROC-AUC มากกว่า 0.50 ส่วน 5 ถึง 6 สัปดาห์ไม่ถูกนำเสนอเป็นผลลัพธ์หลัก">
-            <svg viewBox="0 0 760 330" preserveAspectRatio="none" aria-hidden="true">
-              <rect class="plot-zone-published" x="194" y="38" width="228" height="226" rx="12"></rect>
-              <rect class="plot-zone-muted" x="516" y="38" width="170" height="226" rx="12"></rect>
-              <line class="plot-axis" x1="92" y1="38" x2="92" y2="264"></line>
-              <line class="plot-axis" x1="92" y1="264" x2="686" y2="264"></line>
-              <line class="plot-grid" x1="92" y1="112" x2="686" y2="112"></line>
-              <line class="plot-grid" x1="92" y1="188" x2="686" y2="188"></line>
-              <text class="plot-label" x="12" y="75">BSS</text><text class="plot-sub" x="12" y="91">&gt; 0</text>
-              <text class="plot-label" x="12" y="151">ROC-AUC</text><text class="plot-sub" x="12" y="167">&gt; .50</text>
-              <text class="plot-label" x="12" y="227">Publish</text><text class="plot-sub" x="12" y="243">policy</text>
-              <text class="plot-zone-text plot-zone-text-green" x="216" y="58">เผยแพร่หลัก</text>
-              <text class="plot-zone-text plot-zone-text-muted" x="536" y="58">ไม่ใช่ headline</text>
-              <path class="plot-gate-segment plot-gate-bss" d="M228 112 L432 112"></path>
-              <path class="plot-gate-segment plot-gate-auc" d="M228 188 L432 188"></path>
-              <g class="plot-status-pass"><circle cx="228" cy="112" r="6"></circle><circle cx="330" cy="112" r="6"></circle><circle cx="432" cy="112" r="6"></circle><circle cx="228" cy="188" r="6"></circle><circle cx="330" cy="188" r="6"></circle><circle cx="432" cy="188" r="6"></circle><circle cx="228" cy="244" r="6"></circle><circle cx="330" cy="244" r="6"></circle><circle cx="432" cy="244" r="6"></circle></g>
-              <g class="plot-status-neutral"><circle cx="126" cy="244" r="5"></circle><circle cx="534" cy="244" r="5"></circle><circle cx="636" cy="244" r="5"></circle></g>
-              <g class="plot-ticks"><text x="122" y="292">1</text><text x="224" y="292">2</text><text x="326" y="292">3</text><text x="428" y="292">4</text><text x="530" y="292">5</text><text x="632" y="292">6</text><text x="345" y="317">สัปดาห์ล่วงหน้า</text></g>
+          <div class="plot-head"><div><span class="plot-kicker">Operational backtest / production</span><h3 id="horizon-plot-title">BSS และ ROC-AUC แยกตามสัปดาห์ล่วงหน้า</h3></div><span class="plot-badge">Real scorecard data</span></div>
+          <div class="horizon-chart real-scorecard-chart" role="img" aria-labelledby="horizon-plot-title" aria-label="กราฟผล operational backtest ของ production model แยกตาม lead 2 ถึง 6 สัปดาห์ แสดงค่า BSS และ ROC-AUC จาก scorecard จริง">
+            <svg viewBox="0 0 760 380" preserveAspectRatio="none" aria-hidden="true">
+              <rect class="plot-zone-published" x="112" y="42" width="300" height="246" rx="12"></rect>
+              <rect class="plot-zone-muted" x="412" y="42" width="256" height="246" rx="12"></rect>
+              <line class="plot-axis" x1="94" y1="42" x2="94" y2="288"></line>
+              <line class="plot-axis" x1="94" y1="288" x2="668" y2="288"></line>
+              <line class="plot-zero" x1="94" y1="110" x2="668" y2="110"></line>
+              <line class="plot-auc-threshold" x1="94" y1="246" x2="668" y2="246"></line>
+              <line class="plot-grid" x1="94" y1="62" x2="668" y2="62"></line>
+              <line class="plot-grid" x1="94" y1="196" x2="668" y2="196"></line>
+              <text class="plot-label" x="12" y="76">BSS</text><text class="plot-sub" x="12" y="92">0 baseline</text>
+              <text class="plot-label" x="12" y="198">ROC-AUC</text><text class="plot-sub" x="12" y="214">0.50 gate</text>
+              <text class="plot-zone-text plot-zone-text-green" x="132" y="62">public leads 2–4</text>
+              <text class="plot-zone-text plot-zone-text-muted" x="432" y="62">5–6 ไม่ใช้เป็นหลัก</text>
+              <path class="real-line real-line-bss" d="M150 56 L270 63 L390 97 L510 111 L630 76"></path>
+              <path class="real-line real-line-auc" d="M150 216 L270 185 L390 224 L510 268 L630 259"></path>
+              <g class="real-points real-points-bss"><circle cx="150" cy="56" r="6"></circle><circle cx="270" cy="63" r="6"></circle><circle cx="390" cy="97" r="6"></circle><circle cx="510" cy="111" r="6"></circle><circle cx="630" cy="76" r="6"></circle></g>
+              <g class="real-points real-points-auc"><circle cx="150" cy="216" r="6"></circle><circle cx="270" cy="185" r="6"></circle><circle cx="390" cy="224" r="6"></circle><circle cx="510" cy="268" r="6"></circle><circle cx="630" cy="259" r="6"></circle></g>
+              <g class="plot-value-labels"><text x="150" y="44">.298</text><text x="270" y="51">.259</text><text x="390" y="85">.073</text><text x="510" y="130">−.004</text><text x="630" y="64">.189</text><text x="150" y="232">.592</text><text x="270" y="177">.686</text><text x="390" y="240">.569</text><text x="510" y="284">.437</text><text x="630" y="275">.462</text></g>
+              <g class="plot-ticks"><text x="150" y="316">2</text><text x="270" y="316">3</text><text x="390" y="316">4</text><text x="510" y="316">5</text><text x="630" y="316">6</text><text x="372" y="344">สัปดาห์ล่วงหน้า</text></g>
             </svg>
           </div>
-          <div class="plot-legend"><span><i class="legend-line legend-bss"></i>BSS</span><span><i class="legend-line legend-auc"></i>ROC-AUC</span><span><i class="legend-zone"></i>ช่วงที่เผยแพร่</span></div>
-          <div class="criteria-note"><strong>หมายเหตุการอ่านกราฟ</strong><span>กราฟนี้สื่อเกณฑ์และนโยบายการเผยแพร่จาก Poster ไม่ใส่ค่า metric รายจุดที่ไม่มี provenance ชัดเจน</span></div>
+          <div class="plot-legend"><span><i class="legend-line legend-bss"></i>BSS</span><span><i class="legend-line legend-auc"></i>ROC-AUC</span><span><i class="legend-zone"></i>public leads 2–4</span></div>
+          <div class="criteria-note"><strong>แหล่งข้อมูลและขอบเขต</strong><span>Production operational scorecard · 77 จังหวัด · 26 issue dates · 2024-01-30 ถึง 2024-02-24 · n = 2,002 ต่อ lead · BSS เทียบ per-province climatology</span></div>
         </div>
       </div>
     </section>
