@@ -108,23 +108,20 @@ h1 em { color: var(--orange); font-style: normal; }
 .reference-link small { color: var(--green); font-family: "Space Grotesk", sans-serif; font-size: 9px; }
 .reference-link:hover strong, .reference-link:focus-visible strong { color: var(--orange); }
 .reference-footnote { margin: 13px 0 0 41px; color: var(--ink-faint); font-size: 10px; line-height: 1.45; }
-.app-card { display: flex; flex-direction: column; background: var(--brown-dark); color: #f9eee1; }
+.app-card { align-self: start; display: grid; gap: 18px; padding: 18px 20px; background: var(--brown-dark); color: #f9eee1; }
 .app-card .quick-label { color: #ed9f6c; }
 .app-card .quick-number { background: rgba(237,159,108,.18); color: #edb185; }
 .app-card h3 { color: #fff4e5; }
-.app-card > p { margin: 21px 0 23px; color: #d8c3b1; font-size: 13px; line-height: 1.65; }
+.app-compact-heading { display: grid; grid-template-columns: 34px 1fr; gap: 11px; align-items: center; }
+.app-compact-heading h3 { margin: 4px 0 0; font-size: 18px; }
+.app-card .button { width: 100%; min-height: 42px; padding: 8px 13px; }
 .button-warm { background: #ed9f6c; color: var(--brown-dark); }
 .button-warm:hover { background: #ffd1aa; }
-.app-secondary-link { margin-top: 15px; color: #edb185; font-size: 11px; font-weight: 700; text-decoration: none; }
-.app-secondary-link:hover { color: #fff4e5; text-decoration: underline; text-underline-offset: 4px; }
-.app-note { display: grid; gap: 4px; margin-top: auto; padding-top: 24px; color: #fff4e5; }
-.app-note strong { font-size: 11px; }
-.app-note span { color: #c5ae9d; font-size: 10px; line-height: 1.5; overflow-wrap: anywhere; }
 .line-card { display: flex; flex-direction: column; background: var(--green-soft); }
 .line-card .quick-label { color: var(--green); }
 .line-card .quick-number { background: #c5ddc9; color: var(--green); }
 .line-card h3 { color: #264b38; }
-.line-qr { width: min(100%, 194px); margin: 19px auto 15px; border: 8px solid #fff; border-radius: 10px; box-shadow: 0 8px 18px rgba(38,75,56,.12); }
+.line-qr { width: min(100%, 238px); margin: 19px auto 15px; border: 8px solid #fff; border-radius: 10px; box-shadow: 0 8px 18px rgba(38,75,56,.12); }
 .line-card > p { margin: 0; color: #426550; font-size: 12px; line-height: 1.55; }
 .line-downloads { display: flex; flex-wrap: wrap; gap: 12px; margin-top: auto; padding-top: 18px; }
 .line-downloads a { color: var(--green); font-family: "Space Grotesk", sans-serif; font-size: 10px; font-weight: 700; text-decoration: none; }

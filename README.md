@@ -12,7 +12,7 @@ This page is a compact research link tree for committee members, advisors, and P
 
 - Original research references with direct links to the publisher or official source
 - The HeatMAP App on Vercel: <https://heat-map-frontend.vercel.app/map>
-- The LINE Official Account QR card in [`assets/line-oa-qr.svg`](assets/line-oa-qr.svg) and [`assets/line-oa-qr.png`](assets/line-oa-qr.png)
+- The LINE Official Account QR card in [`assets/line-oa-promo.png`](assets/line-oa-promo.png)
 
 The compact research story is:
 
