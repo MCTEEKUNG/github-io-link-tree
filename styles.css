@@ -83,40 +83,40 @@ h1 em { color: var(--orange); font-style: normal; }
 .signal-three { left: 67px; bottom: 54px; }
 .hero-caption { position: absolute; z-index: 3; right: 25px; bottom: 29px; max-width: 150px; color: var(--green); font-family: "Space Grotesk", sans-serif; font-size: 10px; line-height: 1.35; text-align: right; }
 
-.interactive-diagram { min-height: 0; padding: 22px; border-radius: 24px; background: linear-gradient(145deg, #f3e4d1, #fbf7ef 65%); }
+.hero-visual.interactive-diagram { min-height: 0; padding: 20px; border: 1px solid var(--line); border-top: 3px solid var(--orange); border-radius: var(--radius); background: var(--paper-light); box-shadow: var(--shadow); }
 .interactive-diagram::after { display: none; }
 .interactive-diagram > * { position: relative; z-index: 1; }
 .diagram-head { display: flex; align-items: start; justify-content: space-between; gap: 18px; }
 .diagram-kicker, .plot-kicker { color: var(--orange); font-family: "Space Grotesk", sans-serif; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
-.diagram-head h2 { margin: 7px 0 0; color: var(--brown-dark); font-size: clamp(22px, 2.3vw, 30px); }
+.diagram-head h2 { margin: 6px 0 0; color: var(--brown-dark); font-size: clamp(21px, 2.3vw, 28px); }
 .diagram-hint { max-width: 125px; padding-top: 3px; color: var(--green); font-size: 10px; line-height: 1.35; text-align: right; }
-.diagram-columns { display: grid; grid-template-columns: minmax(0, 1fr) 25px minmax(0, 1fr) 25px minmax(0, 1fr); gap: 8px; align-items: center; margin-top: 20px; }
-.diagram-column { display: grid; gap: 7px; min-width: 0; }
+.diagram-columns { display: grid; grid-template-columns: minmax(0, 1fr) 19px minmax(0, 1fr) 19px minmax(0, 1fr); gap: 6px; align-items: center; margin-top: 16px; }
+.diagram-column { display: grid; gap: 6px; min-width: 0; }
 .diagram-column-label { display: flex; align-items: center; gap: 7px; margin-bottom: 3px; color: var(--ink-soft); font-family: "Space Grotesk", sans-serif; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; }
 .diagram-column-label span { color: var(--orange); font-family: ui-monospace, monospace; }
-.flow-node { display: grid; grid-template-columns: 22px minmax(0, 1fr) 14px; gap: 8px; align-items: center; width: 100%; min-height: 52px; padding: 8px 9px; border: 1px solid rgba(217,204,186,.9); border-radius: 11px; background: rgba(251,248,243,.82); color: var(--brown-dark); font-family: inherit; text-align: left; cursor: pointer; }
+.flow-node { display: grid; grid-template-columns: 20px minmax(0, 1fr) 12px; gap: 6px; align-items: center; width: 100%; min-height: 45px; padding: 6px 7px; border: 1px solid rgba(217,204,186,.9); border-radius: 10px; background: rgba(251,248,243,.82); color: var(--brown-dark); font-family: inherit; text-align: left; cursor: pointer; }
 .flow-node:hover, .flow-node:focus-visible { border-color: var(--orange); background: #fffaf3; }
-.flow-node.is-active { border-color: var(--orange); background: var(--brown-dark); color: #fff4e5; box-shadow: 0 8px 18px rgba(75,48,37,.13); }
-.flow-node-index { display: grid; width: 21px; height: 21px; place-items: center; border-radius: 50%; background: var(--orange-soft); color: var(--orange); font-family: ui-monospace, monospace; font-size: 9px; }
+.flow-node.is-active { border-color: var(--orange); background: var(--brown-dark); color: #fff4e5; box-shadow: 0 6px 12px rgba(75,48,37,.12); }
+.flow-node-index { display: grid; width: 20px; height: 20px; place-items: center; border-radius: 50%; background: var(--orange-soft); color: var(--orange); font-family: ui-monospace, monospace; font-size: 8px; }
 .flow-node.is-active .flow-node-index { background: rgba(237,159,108,.2); color: #edb185; }
 .flow-node-copy { display: grid; gap: 1px; min-width: 0; }
-.flow-node-copy strong { overflow-wrap: anywhere; font-family: "Space Grotesk", "IBM Plex Sans Thai", sans-serif; font-size: 11px; line-height: 1.2; }
-.flow-node-copy small { overflow-wrap: anywhere; color: var(--ink-faint); font-size: 9px; line-height: 1.25; }
+.flow-node-copy strong { overflow-wrap: anywhere; font-family: "Space Grotesk", "IBM Plex Sans Thai", sans-serif; font-size: 10px; line-height: 1.2; }
+.flow-node-copy small { overflow-wrap: anywhere; color: var(--ink-faint); font-size: 8px; line-height: 1.2; }
 .flow-node.is-active .flow-node-copy small { color: #dcbca5; }
-.flow-node-mark { color: var(--orange); font-family: "Space Grotesk", sans-serif; font-size: 12px; }
+.flow-node-mark { color: var(--orange); font-family: "Space Grotesk", sans-serif; font-size: 11px; }
 .flow-node.is-active .flow-node-mark { color: #edb185; }
 .diagram-connector { display: grid; justify-items: center; gap: 7px; color: var(--orange); }
-.diagram-connector span { font-family: "Space Grotesk", sans-serif; font-size: 19px; }
+.diagram-connector span { font-family: "Space Grotesk", sans-serif; font-size: 17px; }
 .diagram-connector i { display: block; width: 18px; height: 1px; background: rgba(198,91,42,.4); }
-.diagram-detail { margin-top: 16px; padding: 15px 17px; border: 1px solid rgba(65,107,84,.2); border-radius: 14px; background: rgba(220,233,222,.68); }
+.diagram-detail { margin-top: 12px; padding: 12px 14px; border: 1px solid rgba(65,107,84,.2); border-radius: 13px; background: rgba(220,233,222,.68); }
 .diagram-detail-meta { display: flex; justify-content: space-between; gap: 12px; color: var(--green); font-family: "Space Grotesk", sans-serif; font-size: 9px; font-weight: 700; letter-spacing: .08em; }
 .detail-badge { color: var(--orange); }
-.diagram-detail h3 { margin: 7px 0 5px; color: #264b38; font-size: 18px; }
-.diagram-detail p { margin: 0; color: #426550; font-size: 11px; line-height: 1.45; }
-.diagram-detail ul { display: grid; gap: 3px; margin: 10px 0 0; padding: 0; list-style: none; color: #426550; font-size: 10px; }
+.diagram-detail h3 { margin: 6px 0 4px; color: #264b38; font-size: 16px; }
+.diagram-detail p { margin: 0; color: #426550; font-size: 10px; line-height: 1.4; }
+.diagram-detail ul { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px 12px; margin: 8px 0 0; padding: 0; list-style: none; color: #426550; font-size: 9px; }
 .diagram-detail li { display: flex; gap: 7px; align-items: baseline; }
 .diagram-detail li::before { content: "↳"; color: var(--orange); font-family: "Space Grotesk", sans-serif; }
-.diagram-footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 15px; margin-top: 13px; color: var(--ink-faint); font-family: "Space Grotesk", sans-serif; font-size: 9px; }
+.diagram-footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 15px; margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--line); color: var(--ink-faint); font-family: "Space Grotesk", sans-serif; font-size: 8px; }
 .diagram-footer > span:first-child { display: inline-flex; align-items: center; gap: 6px; }
 .diagram-pulse { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 4px var(--green-soft); }
 .diagram-footer code { font-size: 9px; }
@@ -295,13 +295,14 @@ h1 em { color: var(--orange); font-style: normal; }
   .hero-actions { display: grid; grid-template-columns: 1fr; }
   .hero-actions .button { width: 100%; }
   .hero-visual { min-height: 320px; border-radius: 50% 50% 18px 18px; }
-  .interactive-diagram { padding: 17px; border-radius: 18px; }
+  .hero-visual.interactive-diagram { min-height: 0; padding: 15px; border-radius: 18px; }
   .diagram-head { display: block; }
   .diagram-hint { max-width: none; margin-top: 8px; text-align: left; }
   .diagram-columns { grid-template-columns: 1fr; gap: 10px; }
   .diagram-connector { display: flex; align-items: center; justify-content: center; height: 17px; transform: rotate(90deg); }
   .diagram-column-label { margin-top: 2px; }
-  .diagram-detail { padding: 13px; }
+  .diagram-detail { padding: 12px; }
+  .diagram-detail ul { grid-template-columns: 1fr; }
   .orbit-one { width: 240px; height: 150px; top: 76px; }
   .orbit-two { width: 320px; height: 205px; top: 50px; }
   .heat-core { width: 111px; height: 111px; }
