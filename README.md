@@ -8,15 +8,17 @@ Poster QR code: [`assets/qr-research-hub.svg`](assets/qr-research-hub.svg) · [`
 
 ## Purpose
 
-This page is a curated research hub for committee members, advisors, and readers who want a clear path through the project. The first three entry points are:
+This page is a compact research link tree for committee members, advisors, and Poster readers. The page is intentionally organized around quick access first, then a short research snapshot and the latest Poster. The first three entry points are:
 
 - Original research references with direct links to the publisher or official source
 - The HeatMAP App on Vercel: <https://heat-map-frontend.vercel.app/map>
 - The LINE Official Account QR card in [`assets/line-oa-qr.svg`](assets/line-oa-qr.svg) and [`assets/line-oa-qr.png`](assets/line-oa-qr.png)
 
-The deeper research story remains:
+The compact research story is:
 
-`Problem → Method → Evidence → Product → Documents`
+`Quick access → Research snapshot → Latest poster → Evidence → References`
+
+The latest Poster is available at [`assets/poster-latest.png`](assets/poster-latest.png). The page keeps the full document archive in the repository but does not list every document on the landing page.
 
 The operational forecast page remains in the source repository at [`DeepSeek_Heatwave/docs/index.html`](https://github.com/MCTEEKUNG/DeepSeek_Heatwave/blob/main/docs/index.html).
 
