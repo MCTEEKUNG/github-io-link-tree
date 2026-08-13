@@ -8,7 +8,13 @@ Poster QR code: [`assets/qr-research-hub.svg`](assets/qr-research-hub.svg) · [`
 
 ## Purpose
 
-This page is a curated research hub for committee members, advisors, and readers who want a clear path through the project:
+This page is a curated research hub for committee members, advisors, and readers who want a clear path through the project. The first three entry points are:
+
+- Original research references with direct links to the publisher or official source
+- The HeatMAP App on Vercel: <https://heat-map-frontend.vercel.app/map>
+- The LINE Official Account QR card in [`assets/line-oa-qr.svg`](assets/line-oa-qr.svg) and [`assets/line-oa-qr.png`](assets/line-oa-qr.png)
+
+The deeper research story remains:
 
 `Problem → Method → Evidence → Product → Documents`
 
