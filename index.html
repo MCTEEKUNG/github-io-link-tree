@@ -42,14 +42,41 @@
           </div>
           <div class="hero-note reveal"><span aria-hidden="true">◎</span> Weekly probability · Production model: <code>logistic_balanced_cal</code></div>
         </div>
-        <div class="hero-visual spotlight-card reveal reveal-scale" aria-label="ภาพประกอบโครงสร้างการพยากรณ์">
-          <div class="orbit orbit-one"></div>
-          <div class="orbit orbit-two"></div>
-          <div class="heat-core"><span>HEAT</span><strong>MAP</strong></div>
-          <div class="signal signal-one"><b>77</b><small>จังหวัด</small></div>
-          <div class="signal signal-two"><b>2–4</b><small>สัปดาห์</small></div>
-          <div class="signal signal-three"><b>P90</b><small>นิยามเหตุการณ์</small></div>
-          <div class="hero-caption">Climate signals → calibrated probability → public action</div>
+        <div class="hero-visual interactive-diagram spotlight-card reveal reveal-scale" role="region" aria-labelledby="diagram-title">
+          <div class="diagram-head">
+            <div><span class="diagram-kicker">Interactive data flow</span><h2 id="diagram-title">ข้อมูล → ตรวจสอบ → ผลลัพธ์</h2></div>
+            <span class="diagram-hint">เลือก node เพื่อดูรายละเอียด</span>
+          </div>
+          <div class="diagram-columns">
+            <div class="diagram-column">
+              <div class="diagram-column-label"><span>01</span><strong>Data inputs</strong></div>
+              <button class="flow-node is-active" type="button" data-flow-key="era5" aria-pressed="true"><span class="flow-node-index">01</span><span class="flow-node-copy"><strong>ERA5</strong><small>1994–2023 · 30 ปี</small></span><span class="flow-node-mark">↗</span></button>
+              <button class="flow-node" type="button" data-flow-key="mjo" aria-pressed="false"><span class="flow-node-index">02</span><span class="flow-node-copy"><strong>MJO</strong><small>phase · amplitude</small></span><span class="flow-node-mark">↗</span></button>
+              <button class="flow-node" type="button" data-flow-key="nino" aria-pressed="false"><span class="flow-node-index">03</span><span class="flow-node-copy"><strong>Niño3.4</strong><small>ENSO context</small></span><span class="flow-node-mark">↗</span></button>
+              <button class="flow-node" type="button" data-flow-key="space" aria-pressed="false"><span class="flow-node-index">04</span><span class="flow-node-copy"><strong>Time + location</strong><small>77 จังหวัด</small></span><span class="flow-node-mark">↗</span></button>
+            </div>
+            <div class="diagram-connector" aria-hidden="true"><span>→</span><i></i></div>
+            <div class="diagram-column">
+              <div class="diagram-column-label"><span>02</span><strong>EDA &amp; quality</strong></div>
+              <button class="flow-node" type="button" data-flow-key="eda" aria-pressed="false"><span class="flow-node-index">01</span><span class="flow-node-copy"><strong>EDA + QC</strong><small>ครบถ้วน · ฤดูกาล</small></span><span class="flow-node-mark">↗</span></button>
+              <button class="flow-node" type="button" data-flow-key="leakage" aria-pressed="false"><span class="flow-node-index">02</span><span class="flow-node-copy"><strong>Temporal gap</strong><small>49 วัน · no leakage</small></span><span class="flow-node-mark">↗</span></button>
+              <button class="flow-node" type="button" data-flow-key="validation" aria-pressed="false"><span class="flow-node-index">03</span><span class="flow-node-copy"><strong>Time validation</strong><small>compare · calibrate</small></span><span class="flow-node-mark">↗</span></button>
+            </div>
+            <div class="diagram-connector" aria-hidden="true"><span>→</span><i></i></div>
+            <div class="diagram-column diagram-column-output">
+              <div class="diagram-column-label"><span>03</span><strong>Public output</strong></div>
+              <button class="flow-node" type="button" data-flow-key="probability" aria-pressed="false"><span class="flow-node-index">01</span><span class="flow-node-copy"><strong>Probability</strong><small>รายสัปดาห์ · 2–4 wk</small></span><span class="flow-node-mark">↗</span></button>
+              <button class="flow-node" type="button" data-flow-key="quality" aria-pressed="false"><span class="flow-node-index">02</span><span class="flow-node-copy"><strong>Quality gate</strong><small>BSS &gt; 0 · AUC &gt; .50</small></span><span class="flow-node-mark">↗</span></button>
+              <button class="flow-node" type="button" data-flow-key="action" aria-pressed="false"><span class="flow-node-index">03</span><span class="flow-node-copy"><strong>Risk map</strong><small>77 จังหวัด · public action</small></span><span class="flow-node-mark">↗</span></button>
+            </div>
+          </div>
+          <div class="diagram-detail" id="diagram-detail" aria-live="polite">
+            <div class="diagram-detail-meta"><span id="diagram-detail-kicker">01 / DATA INPUT</span><span class="detail-badge">Selected</span></div>
+            <h3 id="diagram-detail-title">ERA5 · สภาพอากาศย้อนหลัง 30 ปี</h3>
+            <p id="diagram-detail-copy">ฐานข้อมูลภูมิอากาศหลักสำหรับสร้างสัญญาณความเสี่ยงคลื่นความร้อนระดับจังหวัด</p>
+            <ul id="diagram-detail-list"><li>ช่วงข้อมูล 1994–2023</li><li>เชื่อมตัวแปรอุณหภูมิและ soil moisture</li><li>นำไปตรวจสอบร่วมกับเวลาและพื้นที่ 77 จังหวัด</li></ul>
+          </div>
+          <div class="diagram-footer"><span><i class="diagram-pulse"></i>Click to inspect the research trail</span><span>Production · <code>logistic_balanced_cal</code></span></div>
         </div>
       </div>
     </section>
@@ -99,12 +126,15 @@
       <div class="shell">
         <div class="section-kicker reveal"><span>03</span> How it works / วิธีทำงาน</div>
         <div class="section-heading compact-heading reveal"><div><h2 id="flow-title">จากข้อมูลสู่การเตรียมพร้อม</h2><p>Climate data → model → public action</p></div><span class="heading-rule" aria-hidden="true"></span></div>
-        <div class="flow-grid">
-          <article class="flow-step spotlight-card reveal" data-delay="50"><span>01</span><h3>Climate data</h3><p>ERA5, MJO, Niño3.4 และข้อมูลเวลา–พื้นที่</p></article>
-          <article class="flow-step spotlight-card reveal" data-delay="100"><span>02</span><h3>EDA</h3><p>สำรวจและตรวจสอบความครบถ้วนของข้อมูล</p></article>
-          <article class="flow-step spotlight-card reveal" data-delay="150"><span>03</span><h3>AI model</h3><p>สร้าง probability และตรวจสอบตามเวลา</p></article>
-          <article class="flow-step spotlight-card reveal" data-delay="200"><span>04</span><h3>Public action</h3><p>Risk map บนเว็บและการสื่อสารผ่าน LINE OA</p></article>
+        <div class="research-pipeline" aria-label="กราฟขั้นตอนการทำงานและวิจัยจริงของ Heatwave AI">
+          <article class="pipeline-step spotlight-card reveal" data-delay="50"><div class="pipeline-meta"><span>01</span><small>DATA</small></div><h3>เก็บข้อมูล</h3><p>ERA5 30 ปี · MJO · Niño3.4 · เวลา/พื้นที่</p><small class="pipeline-output">Output · feature table</small></article>
+          <article class="pipeline-step spotlight-card reveal" data-delay="100"><div class="pipeline-meta"><span>02</span><small>EDA</small></div><h3>สำรวจ + ตรวจสอบ</h3><p>ความครบถ้วน ฤดูกาล และความสัมพันธ์ตัวแปร</p><small class="pipeline-output">Output · quality report</small></article>
+          <article class="pipeline-step spotlight-card reveal" data-delay="150"><div class="pipeline-meta"><span>03</span><small>LABEL</small></div><h3>กำหนดเหตุการณ์</h3><p>Tmax สูงกว่าเกณฑ์ท้องถิ่นต่อเนื่อง ≥ 3 วัน</p><small class="pipeline-output">Output · heatwave label</small></article>
+          <article class="pipeline-step spotlight-card reveal" data-delay="200"><div class="pipeline-meta"><span>04</span><small>SPLIT</small></div><h3>กันข้อมูลรั่วไหล</h3><p>แบ่งตามเวลาและเว้น temporal gap 49 วัน</p><small class="pipeline-output">Output · honest split</small></article>
+          <article class="pipeline-step spotlight-card reveal" data-delay="250"><div class="pipeline-meta"><span>05</span><small>MODEL</small></div><h3>สร้าง + ตรวจ model</h3><p>เปรียบเทียบ candidate และ calibrate probability</p><small class="pipeline-output">Production · logistic_balanced_cal</small></article>
+          <article class="pipeline-step spotlight-card reveal" data-delay="300"><div class="pipeline-meta"><span>06</span><small>PUBLIC</small></div><h3>สื่อสารผลลัพธ์</h3><p>เผยแพร่ความน่าจะเป็น 2–4 สัปดาห์ระดับ 77 จังหวัด</p><small class="pipeline-output">Output · risk map / LINE OA</small></article>
         </div>
+        <div class="pipeline-note reveal"><span>RESEARCH TRACE</span><p>ทุกขั้นมี output ให้ตรวจย้อนกลับได้ ตั้งแต่ข้อมูลดิบที่ผ่าน EDA ไปจนถึงเกณฑ์คัดเลือกผลลัพธ์ก่อนเผยแพร่</p></div>
       </div>
     </section>
 
@@ -115,10 +145,30 @@
           <h2 id="results-title">ทำไมจึงเผยแพร่เฉพาะ 2–4 สัปดาห์?</h2>
           <p class="lead-paragraph">ระบบเผยแพร่เฉพาะช่วงที่ผ่านเกณฑ์คุณภาพร่วมกัน เพื่อให้ผู้ใช้อ่านความเสี่ยงได้อย่างมีความหมาย ไม่ใช่แค่เห็นตัวเลข probability</p>
         </div>
-        <div class="criteria-card spotlight-card reveal reveal-scale">
-          <div class="criteria-row"><span class="criteria-mark">BSS &gt; 0</span><p>ดีกว่าสถิติภูมิอากาศย้อนหลังในด้าน probabilistic skill</p></div>
-          <div class="criteria-row"><span class="criteria-mark">ROC-AUC &gt; 0.50</span><p>แยกช่วงเสี่ยงออกจากช่วงปกติได้ดีกว่าการเดาสุ่ม</p></div>
-          <div class="criteria-note"><strong>5–6 สัปดาห์</strong><span>ไม่ถูกนำเสนอเป็นผลลัพธ์หลัก เพราะความสม่ำเสมอของผลยังไม่เพียงพอ</span></div>
+        <div class="criteria-card horizon-card spotlight-card reveal reveal-scale">
+          <div class="plot-head"><div><span class="plot-kicker">Decision plot / quality gate</span><h3 id="horizon-plot-title">ช่วงพยากรณ์ที่ผ่านเกณฑ์เผยแพร่</h3></div><span class="plot-badge">No invented point metrics</span></div>
+          <div class="horizon-chart" role="img" aria-labelledby="horizon-plot-title" aria-label="กราฟเกณฑ์คุณภาพและนโยบายการเผยแพร่ แสดงช่วง 2 ถึง 4 สัปดาห์เป็นช่วงที่ผ่านเกณฑ์ BSS มากกว่า 0 และ ROC-AUC มากกว่า 0.50 ส่วน 5 ถึง 6 สัปดาห์ไม่ถูกนำเสนอเป็นผลลัพธ์หลัก">
+            <svg viewBox="0 0 760 330" preserveAspectRatio="none" aria-hidden="true">
+              <rect class="plot-zone-published" x="194" y="38" width="228" height="226" rx="12"></rect>
+              <rect class="plot-zone-muted" x="516" y="38" width="170" height="226" rx="12"></rect>
+              <line class="plot-axis" x1="92" y1="38" x2="92" y2="264"></line>
+              <line class="plot-axis" x1="92" y1="264" x2="686" y2="264"></line>
+              <line class="plot-grid" x1="92" y1="112" x2="686" y2="112"></line>
+              <line class="plot-grid" x1="92" y1="188" x2="686" y2="188"></line>
+              <text class="plot-label" x="12" y="75">BSS</text><text class="plot-sub" x="12" y="91">&gt; 0</text>
+              <text class="plot-label" x="12" y="151">ROC-AUC</text><text class="plot-sub" x="12" y="167">&gt; .50</text>
+              <text class="plot-label" x="12" y="227">Publish</text><text class="plot-sub" x="12" y="243">policy</text>
+              <text class="plot-zone-text plot-zone-text-green" x="216" y="58">เผยแพร่หลัก</text>
+              <text class="plot-zone-text plot-zone-text-muted" x="536" y="58">ไม่ใช่ headline</text>
+              <path class="plot-gate-segment plot-gate-bss" d="M228 112 L432 112"></path>
+              <path class="plot-gate-segment plot-gate-auc" d="M228 188 L432 188"></path>
+              <g class="plot-status-pass"><circle cx="228" cy="112" r="6"></circle><circle cx="330" cy="112" r="6"></circle><circle cx="432" cy="112" r="6"></circle><circle cx="228" cy="188" r="6"></circle><circle cx="330" cy="188" r="6"></circle><circle cx="432" cy="188" r="6"></circle><circle cx="228" cy="244" r="6"></circle><circle cx="330" cy="244" r="6"></circle><circle cx="432" cy="244" r="6"></circle></g>
+              <g class="plot-status-neutral"><circle cx="126" cy="244" r="5"></circle><circle cx="534" cy="244" r="5"></circle><circle cx="636" cy="244" r="5"></circle></g>
+              <g class="plot-ticks"><text x="122" y="292">1</text><text x="224" y="292">2</text><text x="326" y="292">3</text><text x="428" y="292">4</text><text x="530" y="292">5</text><text x="632" y="292">6</text><text x="345" y="317">สัปดาห์ล่วงหน้า</text></g>
+            </svg>
+          </div>
+          <div class="plot-legend"><span><i class="legend-line legend-bss"></i>BSS</span><span><i class="legend-line legend-auc"></i>ROC-AUC</span><span><i class="legend-zone"></i>ช่วงที่เผยแพร่</span></div>
+          <div class="criteria-note"><strong>หมายเหตุการอ่านกราฟ</strong><span>กราฟนี้สื่อเกณฑ์และนโยบายการเผยแพร่จาก Poster ไม่ใส่ค่า metric รายจุดที่ไม่มี provenance ชัดเจน</span></div>
         </div>
       </div>
     </section>
