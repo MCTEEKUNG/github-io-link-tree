@@ -4,6 +4,8 @@ Static GitHub Pages site for the `DeepSeek_Heatwave` research project.
 
 Live site: <https://mcteekung.github.io/github-io-link-tree/>
 
+Poster QR code: [`assets/qr-research-hub.svg`](assets/qr-research-hub.svg) · [`assets/qr-research-hub.png`](assets/qr-research-hub.png)
+
 ## Purpose
 
 This page is a curated research hub for committee members, advisors, and readers who want a clear path through the project:

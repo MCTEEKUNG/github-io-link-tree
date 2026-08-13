@@ -80,6 +80,13 @@ h1 em { color: var(--orange); font-style: normal; }
 .button-secondary:hover { border-color: var(--brown); background: var(--paper-light); }
 .hero-note { margin-top: 25px; color: var(--ink-faint); font-size: 12px; }
 .hero-note span { color: var(--green); font-size: 17px; vertical-align: -2px; }
+.qr-callout { display: inline-flex; align-items: center; gap: 13px; margin-top: 23px; padding: 9px 13px 9px 9px; border: 1px solid var(--line); border-radius: 14px; background: rgba(251,248,243,.7); }
+.qr-callout img { width: 66px; height: 66px; padding: 4px; border-radius: 8px; background: #fff; }
+.qr-callout > div { display: grid; gap: 2px; line-height: 1.35; }
+.qr-callout strong { color: var(--brown); font-size: 12px; }
+.qr-callout small { color: var(--ink-faint); font-size: 10px; }
+.qr-callout a { margin-top: 5px; color: var(--orange); font-size: 10px; font-weight: 700; text-decoration: none; }
+.qr-callout a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .hero-visual { position: relative; min-height: 415px; border: 1px solid var(--line); border-radius: 50% 50% 22px 22px; background: radial-gradient(circle at 50% 45%, #f4d6bd 0 10%, transparent 10.4%), linear-gradient(150deg, #efe0ce, #f9f4ea 67%); box-shadow: var(--shadow); overflow: hidden; }
 .hero-visual::after { content: ""; position: absolute; inset: 16px; border: 1px dashed rgba(198,91,42,.28); border-radius: 50% 50% 16px 16px; }
 .orbit { position: absolute; border: 1px solid rgba(198,91,42,.35); border-radius: 50%; transform: rotate(-21deg); }
